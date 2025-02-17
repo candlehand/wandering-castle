@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://vxadk18qtw8o"]
+[gd_scene load_steps=3 format=3 uid="uid://vxadk18qtw8o"]
+
+[ext_resource type="PackedScene" uid="uid://b44yxaahyripu" path="res://scenes/castle.tscn" id="1_mybr5"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ehev5"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Castle" parent="." instance=ExtResource("1_mybr5")]
+
+[node name="PlayerCamera2D" type="Camera2D" parent="Castle"]
+
+[node name="GroundStaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="GroundCollisionShape2D" type="CollisionShape2D" parent="GroundStaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_ehev5")
