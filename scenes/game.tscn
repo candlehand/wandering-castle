@@ -1,16 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://vxadk18qtw8o"]
+[gd_scene load_steps=6 format=3 uid="uid://vxadk18qtw8o"]
 
 [ext_resource type="PackedScene" uid="uid://b44yxaahyripu" path="res://scenes/castle.tscn" id="1_mybr5"]
+[ext_resource type="Texture2D" uid="uid://dg3e57220axes" path="res://assets/placeholder_background.png" id="2_6ut4a"]
+[ext_resource type="Texture2D" uid="uid://dd8lce8kwb67i" path="res://assets/placeholder_ground.png" id="2_j8lgc"]
+[ext_resource type="Script" path="res://scenes/TextureRect.gd" id="4_o10i0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ehev5"]
+normal = Vector2(0, 0)
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node"]
 
 [node name="Castle" parent="." instance=ExtResource("1_mybr5")]
+position = Vector2(-589, -6)
+constant_linear_velocity = Vector2(0, 25)
 
 [node name="PlayerCamera2D" type="Camera2D" parent="Castle"]
 
-[node name="GroundStaticBody2D" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="."]
 
-[node name="GroundCollisionShape2D" type="CollisionShape2D" parent="GroundStaticBody2D"]
+[node name="GroundCollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("WorldBoundaryShape2D_ehev5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+position = Vector2(-4, -74)
+texture = ExtResource("2_j8lgc")
+
+[node name="CanvasLayer-1" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer-1"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_6ut4a")
+stretch_mode = 5
+script = ExtResource("4_o10i0")

@@ -1,9 +1,17 @@
-[gd_scene format=3 uid="uid://b44yxaahyripu"]
+[gd_scene load_steps=3 format=3 uid="uid://b44yxaahyripu"]
+
+[ext_resource type="Texture2D" uid="uid://4gf18jf1q484" path="res://assets/placeholder_castle.png" id="1_405t5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47vsg"]
 
 [node name="Castle" type="StaticBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_47vsg")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PlaceholderCastle" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_405t5")
