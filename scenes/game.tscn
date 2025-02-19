@@ -1,16 +1,98 @@
-[gd_scene load_steps=3 format=3 uid="uid://vxadk18qtw8o"]
+[gd_scene load_steps=9 format=3 uid="uid://bmc8sabl0nks"]
 
 [ext_resource type="PackedScene" uid="uid://b44yxaahyripu" path="res://scenes/castle.tscn" id="1_mybr5"]
+[ext_resource type="Texture2D" uid="uid://72egma2c4ft7" path="res://assets/placeholder_background.png" id="2_6ut4a"]
+[ext_resource type="Script" path="res://scripts/TextureRect.gd" id="2_db0h0"]
+[ext_resource type="Texture2D" uid="uid://n8xvjja7ukvk" path="res://assets/placeholder_ground.png" id="2_j8lgc"]
+[ext_resource type="Texture2D" uid="uid://diyyve3htwc3v" path="res://assets/wall1.png" id="5_615sy"]
+[ext_resource type="PackedScene" uid="uid://mlqswpbpkgwa" path="res://scenes/wall_1.tscn" id="6_0ln1d"]
+[ext_resource type="Texture2D" uid="uid://ca35u5wm20jsg" path="res://assets/wall2.png" id="6_kd822"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ehev5"]
+normal = Vector2(0, 0)
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node"]
+
+[node name="CanvasLayer-1" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer-1"]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer-1/ParallaxBackground"]
+offset_right = 1228.0
+offset_bottom = 717.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_6ut4a")
+stretch_mode = 5
+script = ExtResource("2_db0h0")
 
 [node name="Castle" parent="." instance=ExtResource("1_mybr5")]
+position = Vector2(841, 730)
+constant_linear_velocity = Vector2(0, 25)
 
-[node name="PlayerCamera2D" type="Camera2D" parent="Castle"]
+[node name="Ground" type="StaticBody2D" parent="."]
 
-[node name="GroundStaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="GroundCollisionShape2D" type="CollisionShape2D" parent="GroundStaticBody2D"]
+[node name="GroundCollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("WorldBoundaryShape2D_ehev5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+position = Vector2(6188, 267)
+scale = Vector2(6.444, 1.5)
+texture = ExtResource("2_j8lgc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.346
+anchor_top = 0.747
+anchor_right = 0.514
+anchor_bottom = 0.838
+offset_left = 582.56
+offset_top = 479.08
+offset_right = 539.0
+offset_bottom = 453.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.227
+anchor_top = 0.164
+anchor_right = 0.737
+anchor_bottom = 1.584
+offset_left = 0.10099
+offset_top = 8.46801
+offset_right = 0.230988
+offset_bottom = -40.032
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Button" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("5_615sy")
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("5_615sy")
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("5_615sy")
+icon_alignment = 1
+
+[node name="Button4" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("6_kd822")
+icon_alignment = 1
+
+[node name="Button5" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("5_615sy")
+icon_alignment = 1
+
+[node name="Wall1" parent="." instance=ExtResource("6_0ln1d")]
+position = Vector2(919, 605)

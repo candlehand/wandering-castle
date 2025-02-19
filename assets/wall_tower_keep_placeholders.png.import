@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://72egma2c4ft7"
-path="res://.godot/imported/placeholder_background.png-37c61f6db5cfa351cf51bcdefd0fd29f.ctex"
+uid="uid://lmmr6fcm8ksa"
+path="res://.godot/imported/wall_tower_keep_placeholders.png-3db7e1928a70d78b28ef4c611fbbf585.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/placeholder_background.png"
-dest_files=["res://.godot/imported/placeholder_background.png-37c61f6db5cfa351cf51bcdefd0fd29f.ctex"]
+source_file="res://assets/wall_tower_keep_placeholders.png"
+dest_files=["res://.godot/imported/wall_tower_keep_placeholders.png-3db7e1928a70d78b28ef4c611fbbf585.ctex"]
 
 [params]
 

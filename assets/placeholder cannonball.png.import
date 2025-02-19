@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://72egma2c4ft7"
-path="res://.godot/imported/placeholder_background.png-37c61f6db5cfa351cf51bcdefd0fd29f.ctex"
+uid="uid://bcb8qhewyofev"
+path="res://.godot/imported/placeholder cannonball.png-e01ee5a9490b8b90d2aa8e2cf776ec71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/placeholder_background.png"
-dest_files=["res://.godot/imported/placeholder_background.png-37c61f6db5cfa351cf51bcdefd0fd29f.ctex"]
+source_file="res://assets/placeholder cannonball.png"
+dest_files=["res://.godot/imported/placeholder cannonball.png-e01ee5a9490b8b90d2aa8e2cf776ec71.ctex"]
 
 [params]
 
