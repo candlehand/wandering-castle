@@ -22,4 +22,4 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_405t5")
 
 [node name="CastleCam" type="Camera2D" parent="."]
-position = Vector2(-284, 270)
+position = Vector2(-354, 270)
