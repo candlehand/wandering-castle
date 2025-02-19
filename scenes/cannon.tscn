@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://mavl5vhwq7w8"]
+
+[ext_resource type="Texture2D" uid="uid://f1biutgtcscc" path="res://assets/placeholder cannon.png" id="1_2yth1"]
+
+[node name="Cannon" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("1_2yth1")
