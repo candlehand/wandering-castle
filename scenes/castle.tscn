@@ -1,70 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://b44yxaahyripu"]
+[gd_scene load_steps=4 format=3 uid="uid://b44yxaahyripu"]
 
-[ext_resource type="Texture2D" uid="uid://5cm5studvf4x" path="res://assets/Castle Base/Castle Base Sprite Sheet.png" id="2_caled"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h4i20"]
-atlas = ExtResource("2_caled")
-region = Rect2(0, 0, 248, 144)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2mhay"]
-atlas = ExtResource("2_caled")
-region = Rect2(0, 144, 248, 144)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qjb4q"]
-atlas = ExtResource("2_caled")
-region = Rect2(0, 288, 248, 144)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2k647"]
-atlas = ExtResource("2_caled")
-region = Rect2(0, 432, 248, 144)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ajxp8"]
-atlas = ExtResource("2_caled")
-region = Rect2(0, 576, 248, 144)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ntvat"]
-atlas = ExtResource("2_caled")
-region = Rect2(0, 720, 248, 144)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4mayo"]
-atlas = ExtResource("2_caled")
-region = Rect2(0, 864, 248, 144)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ikotv"]
-atlas = ExtResource("2_caled")
-region = Rect2(0, 1008, 248, 144)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_x4uhu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h4i20")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2mhay")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qjb4q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2k647")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ajxp8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ntvat")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4mayo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ikotv")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://bra2cof4oqgjf" path="res://assets/Castle Base Extended Static.png" id="1_mo120"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebyk3"]
 size = Vector2(212, 39)
@@ -74,10 +10,9 @@ size = Vector2(179, 230)
 
 [node name="Castle" type="AnimatableBody2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_x4uhu")
-autoplay = "default"
-frame_progress = 0.37204
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_mo120")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 27.5)
