@@ -1,4 +1,5 @@
 extends Area2D
+class_name Structure
 ## Handles logic for structural walls and (hopefully) towers
 
 
@@ -11,13 +12,15 @@ var image
 
 # dictionary of arrays to hold values for Sprite2D and CollisionShape2D
 # "name of piece": ["path to sprite resource", width(px), height(px), y offset] 
-@export var stuctures_dict = {
-	"wall_s": ["res://assets/Sunset Castle/Wall Small Sunset.png", 32, 46, 1],
-	"wall_m": ["res://assets/Sunset Castle/Wall Medium Sunset.png", 64, 46, 1],
-	"wall_l": ["res://assets/Sunset Castle/Wall Large Sunset.png", 96, 46 , 1],
-	"tower_s": ["res://assets/Sunset Castle/Tower Medium Sunset.png", 48, 104, 4],
-	"tower_l": ["res://assets/Sunset Castle/Tower Large Sunset.png", 62, 135, 4.5]
+const structures_dict = {
+	"wall_s": ["res://assets/Sunset Castle/Wall Small Sunset.png", 32, 48, 0],
+	"wall_m": ["res://assets/Sunset Castle/Wall Medium Sunset.png", 64, 48, 0],
+	"wall_l": ["res://assets/Sunset Castle/Wall Large Sunset.png", 96, 48, 0],
+	"tower_s": ["res://assets/Sunset Castle/Tower Medium Sunset.png", 48, 105, 3.5],
+	"tower_l": ["res://assets/Sunset Castle/Tower Large Sunset.png", 64, 137, 7.5]
 }
+
+var key : String = "wall_s"
 
 # holds extracted structures_dict array
 var structure_values = []
@@ -25,10 +28,13 @@ var structure_values = []
 
 # Called when the node enters the scene tree for the first time. The id of the
 # piece is passed when the node is created. Defaults to small wall.
-func _ready(id := "wall_s"):
+func _ready(id := key):
+	# connect to menu button signal
+	$"../BuildControl"
+	# when created, generate the wall programmically
 	sprite = $Sprite2D
 	collision = $CollisionShape2D
-	structure_values = stuctures_dict[id]
+	structure_values = structures_dict[id]
 	# set the sprite
 	image = Image.load_from_file(structure_values[0])
 	sprite.texture = ImageTexture.create_from_image(image)
@@ -50,4 +56,24 @@ func _input(event):
 		var desired_y = floor(cursor_position.y / 16) * 16
 		self.position = Vector2(desired_x, desired_y)
 		
-		
+
+# constructor method for building new structures; accepts dictionary key as input
+static func new_structure(dict_key: String):
+	print("The structures ride out!")
+	var my_scene: PackedScene = load("res://scenes/structure.tscn")
+	var new_structure: Structure = my_scene.instantiate()
+	new_structure.key = dict_key
+	return new_structure
+	
+
+# boolean toggle for is_dragging
+func drag_toggle(bool := false):
+	if is_dragging:
+		is_dragging = false
+	else:
+		is_dragging = true
+
+# captures signal telling the structure we draggin'
+func _on_game_is_dragging(bool := true):
+	drag_toggle(bool)
+

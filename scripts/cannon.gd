@@ -2,7 +2,8 @@ extends Node2D
 
 @export var Cannonball : PackedScene
 
-var cooldown = .5
+var cooldown = 1
+var current_cooldown = cooldown
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,10 +13,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	cooldown -= delta
-	if cooldown <= 0:
+	current_cooldown -= delta
+	if current_cooldown <= 0:
 		shoot()
-		cooldown = 1.0
+		current_cooldown = cooldown
+		
 
 # fire the cannonball
 func shoot():

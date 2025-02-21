@@ -14,5 +14,5 @@ texture_filter = 1
 texture = ExtResource("1_16osw")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(20, -4)
+position = Vector2(42, -4)
 rotation = -0.16057

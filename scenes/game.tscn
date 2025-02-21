@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dmg2q8udbft3w" path="res://assets/mountain360.png" id="1_jdf5h"]
 [ext_resource type="PackedScene" uid="uid://b44yxaahyripu" path="res://scenes/castle.tscn" id="1_mybr5"]
 [ext_resource type="Texture2D" uid="uid://bn4tlogh1e7d1" path="res://assets/placeholder_ground.png" id="2_j8lgc"]
-[ext_resource type="PackedScene" uid="uid://bhbj5dbt60poq" path="res://scenes/structure.tscn" id="6_0ln1d"]
+[ext_resource type="PackedScene" uid="uid://bhbj5dbt60poq" path="res://scenes/structure.tscn" id="6_g3knu"]
+[ext_resource type="PackedScene" uid="uid://mavl5vhwq7w8" path="res://scenes/cannon.tscn" id="6_hng7h"]
 [ext_resource type="PackedScene" uid="uid://5amwj0l233bq" path="res://scenes/build_control.tscn" id="7_75j1y"]
-[ext_resource type="PackedScene" uid="uid://mavl5vhwq7w8" path="res://scenes/cannon.tscn" id="8_6ejvo"]
 
 [sub_resource type="GDScript" id="GDScript_wbdt1"]
 
@@ -72,14 +72,17 @@ scale = Vector2(6.444, 1.5)
 texture = ExtResource("2_j8lgc")
 
 [node name="Castle" parent="." instance=ExtResource("1_mybr5")]
-position = Vector2(136, 688)
+position = Vector2(135, 259)
 constant_linear_velocity = Vector2(0, 25)
 script = SubResource("GDScript_fclym")
 
-[node name="Cannon" parent="Castle" instance=ExtResource("8_6ejvo")]
-position = Vector2(-64, -44)
-
-[node name="Structure" parent="Castle" instance=ExtResource("6_0ln1d")]
-position = Vector2(-75, -16)
-
 [node name="BuildControl" parent="Castle" instance=ExtResource("7_75j1y")]
+
+[node name="Structure" parent="Castle" instance=ExtResource("6_g3knu")]
+position = Vector2(-59, -68)
+
+[node name="Cannon" parent="Castle" instance=ExtResource("6_hng7h")]
+position = Vector2(-36, -135)
+
+[connection signal="is_dragging" from="." to="Castle/Structure" method="_on_game_is_dragging"]
+[connection signal="create_structure" from="Castle/BuildControl" to="." method="_on_build_control_create_structure"]
