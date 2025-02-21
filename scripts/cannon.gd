@@ -23,4 +23,3 @@ func shoot():
 	owner.add_child(b)
 	b.transform = $Marker2D.global_transform
 	
-
