@@ -22,6 +22,8 @@ shape = SubResource("RectangleShape2D_ebyk3")
 position = Vector2(193, -79)
 
 [node name="BuildingZone" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 512
 
 [node name="ZoneBoundaries" type="CollisionShape2D" parent="BuildingZone"]
 position = Vector2(-1.5, -107)
