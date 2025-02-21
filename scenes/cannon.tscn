@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://mavl5vhwq7w8"]
+[gd_scene load_steps=3 format=3 uid="uid://mavl5vhwq7w8"]
 
-[ext_resource type="Texture2D" uid="uid://f1biutgtcscc" path="res://assets/placeholder cannon.png" id="1_2yth1"]
+[ext_resource type="Texture2D" uid="uid://dom0xrugjh0xu" path="res://assets/Cannon Asset Static.png" id="1_16osw"]
+[ext_resource type="Script" path="res://scripts/cannon.gd" id="1_wcom6"]
 
 [node name="Cannon" type="Node2D"]
+position = Vector2(0, 3)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_wcom6")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.015, 0.015)
-texture = ExtResource("1_2yth1")
+texture_filter = 1
+texture = ExtResource("1_16osw")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(20, -4)
+rotation = -0.16057

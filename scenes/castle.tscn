@@ -1,25 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://b44yxaahyripu"]
 
-[ext_resource type="Texture2D" uid="uid://ckaihkb0esfe4" path="res://assets/placeholder_castle.png" id="1_405t5"]
+[ext_resource type="Texture2D" uid="uid://bra2cof4oqgjf" path="res://assets/Castle Base Extended Static.png" id="1_mo120"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_47vsg"]
-size = Vector2(450, 290)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebyk3"]
+size = Vector2(212, 39)
 
-[node name="Castle" type="StaticBody2D"]
-position = Vector2(-2.38419e-07, 0)
-rotation = 3.14159
-scale = Vector2(0.5, 0.5)
+[node name="Castle" type="AnimatableBody2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_mo120")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8.99984, 56)
-shape = SubResource("RectangleShape2D_47vsg")
-
-[node name="PlaceholderCastle" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("1_405t5")
+position = Vector2(-1, 27.5)
+shape = SubResource("RectangleShape2D_ebyk3")
 
 [node name="CastleCam" type="Camera2D" parent="."]
-position = Vector2(-354, 270)
+position = Vector2(193, -79)
