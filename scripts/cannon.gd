@@ -24,5 +24,3 @@ func shoot():
 	var b = Cannonball.instantiate()
 	owner.add_child(b)
 	b.transform = $Marker2D.global_transform
-	
-

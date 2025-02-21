@@ -1,17 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://dqkcjoqicp35s"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_68lht"]
-[ext_resource type="Texture2D" uid="uid://dmg2q8udbft3w" path="res://assets/mountain360.png" id="1_jdf5h"]
 [ext_resource type="PackedScene" uid="uid://b44yxaahyripu" path="res://scenes/castle.tscn" id="1_mybr5"]
-[ext_resource type="Texture2D" uid="uid://bn4tlogh1e7d1" path="res://assets/placeholder_ground.png" id="2_j8lgc"]
+[ext_resource type="Texture2D" uid="uid://m4bumlh3mgs8" path="res://assets/Background Images/Background Sky.png" id="2_domu4"]
+[ext_resource type="Texture2D" uid="uid://dq17vcosk6gie" path="res://assets/Background Images/Background Mountains.png" id="3_4v4hk"]
+[ext_resource type="Texture2D" uid="uid://by2ert5qc88ss" path="res://assets/Background Images/Background Midground.png" id="4_e3v1m"]
+[ext_resource type="Texture2D" uid="uid://vog2xtl22j7k" path="res://assets/Background Images/Background Foreground.png" id="5_so8o1"]
 [ext_resource type="PackedScene" uid="uid://bhbj5dbt60poq" path="res://scenes/structure.tscn" id="6_g3knu"]
 [ext_resource type="PackedScene" uid="uid://mavl5vhwq7w8" path="res://scenes/cannon.tscn" id="6_hng7h"]
 [ext_resource type="PackedScene" uid="uid://5amwj0l233bq" path="res://scenes/build_control.tscn" id="7_75j1y"]
-
-[sub_resource type="GDScript" id="GDScript_wbdt1"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ehev5"]
-normal = Vector2(0, 0)
 
 [sub_resource type="GDScript" id="GDScript_fclym"]
 script/source = "extends StaticBody2D
@@ -30,7 +27,7 @@ func _process(delta):
 "
 
 [node name="Game" type="Node2D"]
-position = Vector2(-8, 0)
+position = Vector2(100, 0)
 script = ExtResource("1_68lht")
 
 [node name="CanvasLayer-1" type="CanvasLayer" parent="."]
@@ -38,41 +35,34 @@ layer = -1
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer-1"]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer-1/ParallaxBackground"]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -2780.0
-offset_right = 3216.0
-offset_bottom = 2428.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("1_jdf5h")
-expand_mode = 4
-stretch_mode = 5
-script = SubResource("GDScript_wbdt1")
-
 [node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer-1/ParallaxBackground"]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(1424, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer-1/ParallaxBackground/ParallaxLayer"]
-position = Vector2(912, 594)
-texture = ExtResource("1_jdf5h")
+[node name="Sky" type="Sprite2D" parent="CanvasLayer-1/ParallaxBackground/ParallaxLayer"]
+position = Vector2(-2, 1)
+texture = ExtResource("2_domu4")
+centered = false
 
-[node name="Ground" type="StaticBody2D" parent="CanvasLayer-1"]
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer-1/ParallaxBackground"]
+motion_scale = Vector2(0.75, 1)
+motion_mirroring = Vector2(1424, 0)
 
-[node name="GroundCollisionShape2D" type="CollisionShape2D" parent="CanvasLayer-1/Ground"]
-shape = SubResource("WorldBoundaryShape2D_ehev5")
+[node name="Mountains" type="Sprite2D" parent="CanvasLayer-1/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1, 1)
+texture = ExtResource("3_4v4hk")
+centered = false
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer-1/Ground"]
-position = Vector2(6188, 267)
-scale = Vector2(6.444, 1.5)
-texture = ExtResource("2_j8lgc")
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="CanvasLayer-1/ParallaxBackground"]
+motion_mirroring = Vector2(1424, 0)
+
+[node name="Midground" type="Sprite2D" parent="CanvasLayer-1/ParallaxBackground/ParallaxLayer3"]
+position = Vector2(-2, 3)
+texture = ExtResource("4_e3v1m")
+centered = false
 
 [node name="Castle" parent="." instance=ExtResource("1_mybr5")]
-position = Vector2(135, 259)
+position = Vector2(136, 688)
 constant_linear_velocity = Vector2(0, 25)
 script = SubResource("GDScript_fclym")
 
@@ -86,3 +76,14 @@ position = Vector2(-36, -135)
 
 [connection signal="is_dragging" from="." to="Castle/Structure" method="_on_game_is_dragging"]
 [connection signal="create_structure" from="Castle/BuildControl" to="." method="_on_build_control_create_structure"]
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+layer = 5
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_scale = Vector2(1.4, 1)
+motion_mirroring = Vector2(1424, 0)
+
+[node name="Foreground" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer4"]
+position = Vector2(-2, 1)
+texture = ExtResource("5_so8o1")
+centered = false
