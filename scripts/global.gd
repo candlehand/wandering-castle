@@ -3,11 +3,11 @@ extends Node
 
 # wall params dictionary
 var structures_dict = {
-	"wall_s": ["res://assets/Wall Small Asset.png", 32, 46, 1],
-	"wall_m": ["res://assets/Wall Medium Asset.png", 64, 46, 1],
-	"wall_l": ["res://assets/Wall Large Asset.png", 96, 46 , 1],
-	"tower_s": ["res://assets/Tower Small Asset.png", 48, 104, 4],
-	"tower_l": ["res://assets/Tower Tall Asset.png", 62, 135, 4.5]
+	"wall_s": ["res://assets/Sunset Castle/Wall Small Sunset.png", 32, 46, 1],
+	"wall_m": ["res://assets/Sunset Castle/Wall Medium Sunset.png", 64, 46, 1],
+	"wall_l": ["res://assets/Sunset Castle/Wall Large Sunset.png", 96, 46 , 1],
+	"tower_s": ["res://assets/Sunset Castle/Tower Medium Sunset.png", 48, 104, 4],
+	"tower_l": ["res://assets/Sunset Castle/Tower Large Sunset.png", 62, 135, 4.5]
 }
 
 # Called when the node enters the scene tree for the first time.
