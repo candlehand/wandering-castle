@@ -34,10 +34,12 @@ func _ready():
 func _process(delta):
 	pass
 
+
 # 'i' denotes the number of the button starting from left; 0, 1, 2, 3
 func _on_press(dict_key):
-	print("[SIGNAL] The ", dict_key," button calls for aid! (build_control)")
+	print("[SIGNAL] The ", dict_key," button calls for aid!")
 	create_structure.emit(dict_key)	
+
 
 # generate the buttons dynamically
 func generate_menu():

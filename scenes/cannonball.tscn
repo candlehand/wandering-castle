@@ -8,6 +8,7 @@ radius = 4.0
 
 [node name="Cannonball" type="Area2D"]
 script = ExtResource("1_0fflg")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

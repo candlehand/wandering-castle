@@ -3,13 +3,17 @@ extends Node
 
 # importing scenes to be used in script
 var structure = preload("res://scenes/structure.tscn")
+var physics_structure = preload("res://scenes/physics_structure.tscn")
 var player_castle 
 
+var structure_name
 var new_structure
 
 
 signal is_dragging
 var placing_piece = false
+var desired_x
+var desired_y
 
 # determines forward speed of castle
 var castle_velocity = .5
@@ -41,12 +45,16 @@ func _input(event):
 			var desired_x = (floor(cursor_position.x / 8) * 8) + 5
 			var desired_y = floor(cursor_position.y / 8) * 8
 			new_structure.position = Vector2(desired_x, desired_y)
-		# detect mouse clicks from the player and try placing the item
+			# detect mouse clicks from the player and try placing the item
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and placing_piece:
+				var cursor_position = player_castle.get_local_mouse_position()
+				var desired_x = (floor(cursor_position.x / 8) * 8) + 5
+				var desired_y = floor(cursor_position.y / 8) * 8
+				print(new_structure)
+				new_structure.queue_free()
 				placing_piece = false
-				# if item is in legal area...
-					# place it!
+				create_physics_structure(structure_name, desired_x, desired_y)
 				print("Left button was clicked at ", event.position)
 
 
@@ -54,14 +62,35 @@ func _input(event):
 func _on_build_control_create_structure(dict_key):
 	# calls constructor method in Structure, passes key from button
 	print("The castle hears the button's call.")
-	if dict_key == "cannon":
+	structure_name = dict_key
+	if structure_name == "cannon":
 		var cannon_scene: PackedScene = load("res://scenes/cannon.tscn")
 		new_structure = cannon_scene.instantiate()
 		player_castle.add_child(new_structure)
 	else:
-		new_structure = Structure.new_structure(dict_key)
+		new_structure = Structure.new_structure(structure_name)
 		# set is_dragging for game & structure scenes
 		is_dragging.emit(true)
 		player_castle.add_child(new_structure)
 	placing_piece = true
 
+
+# takes the structure_name as argument to generate a RigidBody2D version of the structure
+func create_physics_structure(structure_name, x, y):
+	print("Structure name: ", structure_name)
+	if structure_name == "cannon":
+		# make a cannon or catapult!
+		print(structure_name, " Brought us into the cannon code")
+		var cannon_scene: PackedScene = load("res://scenes/cannon_rigid.tscn")
+		var rigid_cannon = cannon_scene.instantiate()
+		player_castle.add_child(rigid_cannon)
+		rigid_cannon.position = Vector2(x, y)
+	else:
+		# make a regular structure!
+		print("Generating physics structure: ", structure_name)
+		new_structure = PhysicsStructure.new_structure(structure_name)
+		new_structure.construct(structure_name)
+		player_castle.add_child(new_structure)
+		new_structure.position = Vector2(x, y)
+		
+	

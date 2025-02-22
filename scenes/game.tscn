@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddhlgmmibyksv"]
+[gd_scene load_steps=9 format=3 uid="uid://ddhlgmmibyksv"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_68lht"]
 [ext_resource type="PackedScene" uid="uid://b44yxaahyripu" path="res://scenes/castle.tscn" id="1_mybr5"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://by2ert5qc88ss" path="res://assets/Background Images/Background Midground.png" id="4_e3v1m"]
 [ext_resource type="Texture2D" uid="uid://vog2xtl22j7k" path="res://assets/Background Images/Background Foreground.png" id="5_so8o1"]
 [ext_resource type="PackedScene" uid="uid://5amwj0l233bq" path="res://scenes/build_control.tscn" id="7_75j1y"]
-[ext_resource type="PackedScene" uid="uid://mavl5vhwq7w8" path="res://scenes/cannon.tscn" id="8_cwvpy"]
 
 [sub_resource type="GDScript" id="GDScript_fclym"]
 script/source = "extends StaticBody2D
@@ -81,7 +80,4 @@ offset_top = -76.0
 offset_right = 174.0
 offset_bottom = -76.0
 
-[node name="Cannon" parent="Castle" instance=ExtResource("8_cwvpy")]
-
-[connection signal="create_cannon" from="Castle/BuildControl" to="." method="_on_build_control_create_cannon"]
 [connection signal="create_structure" from="Castle/BuildControl" to="." method="_on_build_control_create_structure"]

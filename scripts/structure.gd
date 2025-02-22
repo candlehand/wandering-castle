@@ -46,14 +46,6 @@ func _process(delta):
 	pass
 	
 
-# binds object placement to grid. the +5 on line 25 is because we wonky in here
-#func _input(event):
-#	if is_dragging and event is InputEventMouseMotion:
-#		var cursor_position = get_parent().get_local_mouse_position()
-#		var desired_x = (floor(cursor_position.x / 16) * 16) + 5
-#		var desired_y = floor(cursor_position.y / 16) * 16
-#		self.position = Vector2(desired_x, desired_y)
-#		
 
 # constructor method for building new structures; accepts dictionary key as input
 static func new_structure(dict_key: String):
