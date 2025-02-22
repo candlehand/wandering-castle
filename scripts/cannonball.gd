@@ -1,6 +1,6 @@
 extends Area2D
 
-var velocity = Vector2(700, -250)
+var velocity = Vector2(750, -200)
 
 
 func _process(delta):

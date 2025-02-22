@@ -12,7 +12,7 @@ config_version=5
 
 config/name="wandering-castle"
 run/main_scene="res://scenes/game.tscn"
-config/features=PackedStringArray("4.0", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -29,4 +29,3 @@ window/stretch/mode="viewport"
 
 movie_writer/mjpeg_quality=0.5
 movie_writer/movie_file="C:/Users/jcox0/Desktop/Wandering Castle Stuff/Walking castle movie.avi"
-movie_writer/fps=24

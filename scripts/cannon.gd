@@ -24,4 +24,4 @@ func shoot():
 	var b = Cannonball.instantiate()
 	print("boom")
 	owner.add_child(b)
-	b.transform = $Marker2D.global_transform
+	b.transform = $RigidBody2D.global_transform

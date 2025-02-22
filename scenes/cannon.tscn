@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://mavl5vhwq7w8"]
+[gd_scene load_steps=21 format=3 uid="uid://mavl5vhwq7w8"]
 
 [ext_resource type="Script" path="res://scripts/cannon.gd" id="1_wcom6"]
 [ext_resource type="Texture2D" uid="uid://bdri5j1gmbxkq" path="res://assets/Weapons/Cannon Asset Spritesheet.png" id="3_n71ao"]
@@ -123,17 +123,26 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dng7v"]
+size = Vector2(32, 22)
+
 [node name="Cannon" type="Node2D"]
 position = Vector2(0, 3)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_wcom6")
 metadata/_edit_group_ = true
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-175, -8)
-rotation = -0.280998
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
 sprite_frames = SubResource("SpriteFrames_lvaqx")
 animation = &"firing"
 autoplay = "firing"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-12, 1)
+shape = SubResource("RectangleShape2D_dng7v")
+
+[node name="Marker2D" type="Marker2D" parent="RigidBody2D"]
+rotation = -0.280998
+scale = Vector2(1, 1)

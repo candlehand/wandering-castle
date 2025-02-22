@@ -80,4 +80,3 @@ func _on_game_is_dragging(bool := true):
 	print("drag toggle received")
 	drag_toggle(bool)
 	
-
