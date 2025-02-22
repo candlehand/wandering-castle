@@ -76,4 +76,3 @@ func drag_toggle(bool := false):
 # captures signal telling the structure we draggin'
 func _on_game_is_dragging(bool := true):
 	drag_toggle(bool)
-

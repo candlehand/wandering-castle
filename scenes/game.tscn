@@ -40,7 +40,6 @@ motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(1424, 0)
 
 [node name="Sky" type="Sprite2D" parent="CanvasLayer-1/ParallaxBackground/ParallaxLayer"]
-position = Vector2(-2, 1)
 texture = ExtResource("2_domu4")
 centered = false
 
@@ -49,7 +48,6 @@ motion_scale = Vector2(0.75, 1)
 motion_mirroring = Vector2(1424, 0)
 
 [node name="Mountains" type="Sprite2D" parent="CanvasLayer-1/ParallaxBackground/ParallaxLayer2"]
-position = Vector2(1, 1)
 texture = ExtResource("3_4v4hk")
 centered = false
 
@@ -57,25 +55,22 @@ centered = false
 motion_mirroring = Vector2(1424, 0)
 
 [node name="Midground" type="Sprite2D" parent="CanvasLayer-1/ParallaxBackground/ParallaxLayer3"]
-position = Vector2(-2, 3)
 texture = ExtResource("4_e3v1m")
 centered = false
 
 [node name="Castle" parent="." instance=ExtResource("1_mybr5")]
-position = Vector2(136, 688)
+position = Vector2(27, 259)
 constant_linear_velocity = Vector2(0, 25)
 script = SubResource("GDScript_fclym")
 
 [node name="BuildControl" parent="Castle" instance=ExtResource("7_75j1y")]
 
 [node name="Structure" parent="Castle" instance=ExtResource("6_g3knu")]
-position = Vector2(-59, -68)
+position = Vector2(-44, -16)
 
 [node name="Cannon" parent="Castle" instance=ExtResource("6_hng7h")]
-position = Vector2(-36, -135)
+position = Vector2(61, -133)
 
-[connection signal="is_dragging" from="." to="Castle/Structure" method="_on_game_is_dragging"]
-[connection signal="create_structure" from="Castle/BuildControl" to="." method="_on_build_control_create_structure"]
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 layer = 5
 
@@ -84,6 +79,9 @@ motion_scale = Vector2(1.4, 1)
 motion_mirroring = Vector2(1424, 0)
 
 [node name="Foreground" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer4"]
-position = Vector2(-2, 1)
+position = Vector2(0, 2)
 texture = ExtResource("5_so8o1")
 centered = false
+
+[connection signal="is_dragging" from="." to="Castle/Structure" method="_on_game_is_dragging"]
+[connection signal="create_structure" from="Castle/BuildControl" to="." method="_on_build_control_create_structure"]
