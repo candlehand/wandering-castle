@@ -1,0 +1,151 @@
+[gd_scene load_steps=21 format=3 uid="uid://mavl5vhwq7w8"]
+
+[ext_resource type="Script" path="res://scripts/cannon.gd" id="1_u6f4v"]
+[ext_resource type="Texture2D" uid="uid://bdri5j1gmbxkq" path="res://assets/Weapons/Cannon Asset Spritesheet.png" id="2_8w8th"]
+[ext_resource type="PackedScene" uid="uid://dsr0rkx0oqth3" path="res://scenes/cannonball.tscn" id="2_ic0ap"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbnxy"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(0, 0, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj0v8"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(56, 0, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3l1c"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(112, 0, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u57p6"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(0, 24, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p6b7"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(56, 24, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74k3c"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(112, 24, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owj6a"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(0, 48, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sggi7"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(56, 48, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yti6l"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(112, 48, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsw2q"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(0, 72, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oya6l"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(56, 72, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hgp7"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(112, 72, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxo7w"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(0, 96, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_466he"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(0, 120, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4j8i"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(112, 96, 56, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhk5k"]
+atlas = ExtResource("2_8w8th")
+region = Rect2(56, 96, 56, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lvaqx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbnxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj0v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3l1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u57p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p6b7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74k3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owj6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sggi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yti6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsw2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oya6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hgp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxo7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_466he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4j8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhk5k")
+}],
+"loop": true,
+"name": &"firing",
+"speed": 16.0
+}]
+
+[node name="Cannon" type="Node2D"]
+position = Vector2(0, 3)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_u6f4v")
+Cannonball = ExtResource("2_ic0ap")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_lvaqx")
+autoplay = "default"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+<<<<<<< HEAD
+position = Vector2(42, -4)
+rotation = -0.16057
+=======
+position = Vector2(-175, -8)
+rotation = -0.280998
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lvaqx")
+animation = &"firing"
+autoplay = "firing"
+>>>>>>> moose

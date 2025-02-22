@@ -69,11 +69,15 @@ static func new_structure(dict_key: String):
 # boolean toggle for is_dragging
 func drag_toggle(bool := false):
 	if is_dragging:
+		print("drag is off")
 		is_dragging = false
 	else:
+		print("drag is on")
 		is_dragging = true
 
 # captures signal telling the structure we draggin'
 func _on_game_is_dragging(bool := true):
+	print("drag toggle received")
 	drag_toggle(bool)
+	
 

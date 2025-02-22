@@ -29,20 +29,24 @@ func _process(delta):
 
 # used to capture inputs from player
 func _input(event):
-	if placing_piece and event is InputEventMouseMotion:
-		var cursor_position = player_castle.get_local_mouse_position()
-		var desired_x = (floor(cursor_position.x / 16) * 16) + 5
-		var desired_y = floor(cursor_position.y / 16) * 16
-		new_structure.position = Vector2(desired_x, desired_y)
+	# if player is holding a piece...
+	if placing_piece: 
+		# lock the piece to a relative grid
+		if event is InputEventMouseMotion:
+			var cursor_position = player_castle.get_local_mouse_position()
+			var desired_x = (floor(cursor_position.x / 16) * 16) + 5
+			var desired_y = floor(cursor_position.y / 16) * 16
+			new_structure.position = Vector2(desired_x, desired_y)
 		# detect mouse clicks from the player and try placing the item
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and placing_piece:
-				is_dragging.emit(false)
+				print("we made it!")
+				placing_piece = false
 				# if item is in legal area...
 					# place it!
-					
+						
 				print("Left button was clicked at ", event.position)
-	
+		
 # called when a build button is pressed
 func _on_build_control_create_structure(dict_key):
 	# calls constructor method in Structure, passes key from button
