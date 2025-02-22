@@ -1,25 +1,32 @@
 extends Control
+## BuildControl script
+## holds & creates player interactable buttons
 
 
-var castle = preload("res://scenes/castle.tscn")
-var structure = preload("res://scenes/structure.tscn")
+# variables for accessing the global structure dictionary
 var structures_dict
 var dict_values
 var dict_key
-
-var rand_icon = ["wall_s", "wall_m", "wall_l", "tower_s", "tower_l"]
+var struct_names = ["wall_s", "wall_m", "wall_l",
+					"tower_s", "tower_m", "tower_l",
+					"cannon", "catapult"]
+# holds values for iterization and randomization
+var struct_iter
 var rand_choice = 0
 
+# holds values relating to buttons and their icons
 var button
 var image
 var new_piece
 var new_icon
 
 signal create_structure
+signal create_cannon
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# access the global structure values
 	structures_dict = Global.structures_dict
 	generate_menu()
 
@@ -29,26 +36,44 @@ func _process(delta):
 
 # 'i' denotes the number of the button starting from left; 0, 1, 2, 3
 func _on_press(dict_key):
-	create_structure.emit(dict_key)
-	print("The ", dict_key," button calls for aid!")
+	print("[SIGNAL] The ", dict_key," button calls for aid! (build_control)")
+	create_structure.emit(dict_key)	
 
-# generate the buttons dynamically, with randomization
+# generate the buttons dynamically
 func generate_menu():
-	var hbox = $HBoxContainer
-	for i in range(0, 4):
-		# generate random number 0-4
-		rand_choice = randi() % 5
-		# use that number to assign a dict key value from the rand_icon table
-		dict_key = rand_icon[rand_choice]
-		# assign the found dict values to a variable
-		dict_values = structures_dict[dict_key]
-		button = Button.new()
-		# bind the buttons to the on-click method, pass i as identifier
-		button.pressed.connect(_on_press.bind(dict_key))
-		image = Image.load_from_file(dict_values[0])
-		new_icon = create_icon(image)
-		button.icon = ImageTexture.create_from_image(image)
-		hbox.add_child(button)
+	var walls = $WallsContainer
+	var towers = $TowerContainer
+	var booms = $BoomContainer
+	# iterate through the buttons, populating them with images
+	# 3 wall buttons, top row
+	for i in range(0, 3):
+		read_dict(i)
+		button_creator(walls)
+	# 3 towers, middle row
+	for i in range(3, 6):
+		read_dict(i)
+		button_creator(towers)
+	# weapons, bottom row
+	read_dict(6)
+	button_creator(booms)
+	
+func read_dict(i):
+	# use i to iterate, selecting increasing value from dict
+	struct_iter = i
+	# use that number to assign a key value from the struct_name table
+	dict_key = struct_names[struct_iter]
+	# assign the found dict values to a variable
+	dict_values = structures_dict[dict_key]
+
+# creates a new button, accepts the button's container(parent) as argument
+func button_creator(container):
+	button = Button.new()
+	# bind the buttons to the on-click method, pass dict key as identifier
+	button.pressed.connect(_on_press.bind(dict_key))
+	image = Image.load_from_file(dict_values[0])
+	new_icon = create_icon(image)
+	button.icon = ImageTexture.create_from_image(image)
+	container.add_child(button)
 
 # shrinks the image by a factor of 2 to create smaller icons from assets
 func create_icon(image: Image):

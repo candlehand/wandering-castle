@@ -1,25 +1,90 @@
-[gd_scene load_steps=4 format=3 uid="uid://b44yxaahyripu"]
+[gd_scene load_steps=13 format=3 uid="uid://b44yxaahyripu"]
 
-[ext_resource type="Texture2D" uid="uid://bra2cof4oqgjf" path="res://assets/Castle Base Extended Static.png" id="1_mo120"]
+[ext_resource type="Texture2D" uid="uid://5cm5studvf4x" path="res://assets/Castle Base/Castle Base Sprite Sheet.png" id="1_qn4hy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebyk3"]
 size = Vector2(212, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2un4"]
+atlas = ExtResource("1_qn4hy")
+region = Rect2(0, 0, 248, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21f5o"]
+atlas = ExtResource("1_qn4hy")
+region = Rect2(0, 144, 248, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jb51"]
+atlas = ExtResource("1_qn4hy")
+region = Rect2(0, 288, 248, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqs71"]
+atlas = ExtResource("1_qn4hy")
+region = Rect2(0, 432, 248, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubixa"]
+atlas = ExtResource("1_qn4hy")
+region = Rect2(0, 576, 248, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa2jk"]
+atlas = ExtResource("1_qn4hy")
+region = Rect2(0, 720, 248, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn1b6"]
+atlas = ExtResource("1_qn4hy")
+region = Rect2(0, 864, 248, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kchls"]
+atlas = ExtResource("1_qn4hy")
+region = Rect2(0, 1008, 248, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_stg26"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2un4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21f5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jb51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqs71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubixa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa2jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn1b6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kchls")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b77xx"]
 size = Vector2(179, 230)
 
 [node name="Castle" type="AnimatableBody2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_mo120")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 27.5)
 shape = SubResource("RectangleShape2D_ebyk3")
 
 [node name="CastleCam" type="Camera2D" parent="."]
-position = Vector2(193, -79)
+position = Vector2(143, -79)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_stg26")
+autoplay = "default"
 
 [node name="BuildingZone" type="Area2D" parent="."]
 collision_layer = 512

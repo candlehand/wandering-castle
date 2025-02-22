@@ -124,6 +124,7 @@ animations = [{
 }]
 
 [node name="Cannon" type="Node2D"]
+texture_filter = 1
 position = Vector2(0, 3)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_wcom6")
@@ -132,8 +133,10 @@ metadata/_edit_group_ = true
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-175, -8)
 rotation = -0.280998
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lvaqx")
 animation = &"firing"
 autoplay = "firing"
+metadata/_edit_group_ = true
