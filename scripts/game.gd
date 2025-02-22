@@ -4,13 +4,15 @@ extends Node
 # importing scenes to be used in script
 var structure = preload("res://scenes/structure.tscn")
 var physics_structure = preload("res://scenes/physics_structure.tscn")
-var player_castle 
+var player_castle
+var walking = false
 
 var structure_name
 var new_structure
 
 
 signal is_dragging
+
 var placing_piece = false
 var desired_x
 var desired_y
@@ -23,6 +25,7 @@ var castle_velocity = .5
 func _ready():
 	# assign nodes
 	player_castle = $Castle
+	$Castle/AnimatedSprite2D.pause()
 	# inits the random number generator
 	randomize()
 	pass
@@ -30,9 +33,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	# slowly and steadily moves the castle forward
-	$Castle.position.x += castle_velocity
-	pass
+	if walking == true:
+		# slowly and steadily moves the castle forward
+		$Castle.position.x += castle_velocity
+		pass
 
 
 # used to capture inputs from player
@@ -92,5 +96,9 @@ func create_physics_structure(structure_name, x, y):
 		new_structure.construct(structure_name)
 		player_castle.add_child(new_structure)
 		new_structure.position = Vector2(x, y)
-		
-	
+
+
+func _on_build_control_go_forth():
+	walking = true
+	$Castle/AnimatedSprite2D.play()
+	pass

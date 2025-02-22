@@ -1,6 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://b44yxaahyripu"]
+[gd_scene load_steps=16 format=3 uid="uid://b44yxaahyripu"]
 
+[ext_resource type="Script" path="res://scripts/castle.gd" id="1_1lk44"]
 [ext_resource type="Texture2D" uid="uid://5cm5studvf4x" path="res://assets/Castle Base/Castle Base Sprite Sheet.png" id="1_qn4hy"]
+[ext_resource type="Texture2D" uid="uid://b3rx23ohfq0vn" path="res://assets/Sunset Castle/Keep Sunset.png" id="2_vsfxp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebyk3"]
 size = Vector2(212, 39)
@@ -72,10 +74,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b77xx"]
 size = Vector2(179, 230)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7f6j"]
+size = Vector2(65, 74)
+
 [node name="Castle" type="AnimatableBody2D"]
 texture_filter = 1
-collision_mask = 2
+collision_layer = 3
+collision_mask = 3
 sync_to_physics = false
+script = ExtResource("1_1lk44")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -96,3 +103,18 @@ collision_mask = 512
 [node name="ZoneBoundaries" type="CollisionShape2D" parent="BuildingZone"]
 position = Vector2(-1.5, -107)
 shape = SubResource("RectangleShape2D_b77xx")
+
+[node name="Keep" type="AnimatableBody2D" parent="."]
+position = Vector2(0, -32)
+collision_layer = 3
+collision_mask = 3
+sync_to_physics = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Keep"]
+texture = ExtResource("2_vsfxp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Keep"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_d7f6j")

@@ -65,6 +65,7 @@ func drag_toggle(bool := false):
 		print("drag is on")
 		is_dragging = true
 
+
 # captures signal telling the structure we draggin'
 func _on_game_is_dragging(bool := true):
 	print("drag toggle received")
