@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqkcjoqicp35s"]
+[gd_scene load_steps=10 format=3 uid="uid://ddhlgmmibyksv"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_68lht"]
 [ext_resource type="PackedScene" uid="uid://b44yxaahyripu" path="res://scenes/castle.tscn" id="1_mybr5"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dq17vcosk6gie" path="res://assets/Background Images/Background Mountains.png" id="3_4v4hk"]
 [ext_resource type="Texture2D" uid="uid://by2ert5qc88ss" path="res://assets/Background Images/Background Midground.png" id="4_e3v1m"]
 [ext_resource type="Texture2D" uid="uid://vog2xtl22j7k" path="res://assets/Background Images/Background Foreground.png" id="5_so8o1"]
-[ext_resource type="PackedScene" uid="uid://bhbj5dbt60poq" path="res://scenes/structure.tscn" id="6_g3knu"]
 [ext_resource type="PackedScene" uid="uid://mavl5vhwq7w8" path="res://scenes/cannon.tscn" id="6_hng7h"]
 [ext_resource type="PackedScene" uid="uid://5amwj0l233bq" path="res://scenes/build_control.tscn" id="7_75j1y"]
 
@@ -30,32 +29,44 @@ func _process(delta):
 position = Vector2(100, 0)
 script = ExtResource("1_68lht")
 
-[node name="CanvasLayer-1" type="CanvasLayer" parent="."]
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer-1"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="BackgroundLayer"]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer-1/ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BackgroundLayer/ParallaxBackground"]
 motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(1424, 0)
 
-[node name="Sky" type="Sprite2D" parent="CanvasLayer-1/ParallaxBackground/ParallaxLayer"]
+[node name="Sky" type="Sprite2D" parent="BackgroundLayer/ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("2_domu4")
 centered = false
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer-1/ParallaxBackground"]
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="BackgroundLayer/ParallaxBackground"]
 motion_scale = Vector2(0.75, 1)
 motion_mirroring = Vector2(1424, 0)
 
-[node name="Mountains" type="Sprite2D" parent="CanvasLayer-1/ParallaxBackground/ParallaxLayer2"]
+[node name="Mountains" type="Sprite2D" parent="BackgroundLayer/ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource("3_4v4hk")
 centered = false
 
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="CanvasLayer-1/ParallaxBackground"]
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="BackgroundLayer/ParallaxBackground"]
 motion_mirroring = Vector2(1424, 0)
 
-[node name="Midground" type="Sprite2D" parent="CanvasLayer-1/ParallaxBackground/ParallaxLayer3"]
+[node name="Midground" type="Sprite2D" parent="BackgroundLayer/ParallaxBackground/ParallaxLayer3"]
 texture = ExtResource("4_e3v1m")
+centered = false
+
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+layer = 5
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_scale = Vector2(1.4, 1)
+motion_mirroring = Vector2(1424, 0)
+
+[node name="Foreground" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer4"]
+position = Vector2(0, 2)
+texture = ExtResource("5_so8o1")
 centered = false
 
 [node name="Castle" parent="." instance=ExtResource("1_mybr5")]
@@ -65,23 +76,7 @@ script = SubResource("GDScript_fclym")
 
 [node name="BuildControl" parent="Castle" instance=ExtResource("7_75j1y")]
 
-[node name="Structure" parent="Castle" instance=ExtResource("6_g3knu")]
-position = Vector2(-44, -16)
-
 [node name="Cannon" parent="Castle" instance=ExtResource("6_hng7h")]
 position = Vector2(61, -133)
 
-[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
-layer = 5
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground2"]
-motion_scale = Vector2(1.4, 1)
-motion_mirroring = Vector2(1424, 0)
-
-[node name="Foreground" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer4"]
-position = Vector2(0, 2)
-texture = ExtResource("5_so8o1")
-centered = false
-
-[connection signal="is_dragging" from="." to="Castle/Structure" method="_on_game_is_dragging"]
 [connection signal="create_structure" from="Castle/BuildControl" to="." method="_on_build_control_create_structure"]

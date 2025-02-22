@@ -44,7 +44,6 @@ func _input(event):
 				placing_piece = false
 				# if item is in legal area...
 					# place it!
-						
 				print("Left button was clicked at ", event.position)
 		
 # called when a build button is pressed
