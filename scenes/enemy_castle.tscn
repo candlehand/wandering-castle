@@ -1,0 +1,70 @@
+[gd_scene load_steps=23 format=3 uid="uid://q06lxf085jvn"]
+
+[ext_resource type="PackedScene" uid="uid://cd2lr7a5ynwl3" path="res://scenes/enemy_wall_large.tscn" id="1_0chl8"]
+[ext_resource type="Script" path="res://scenes/enemy_wall_large.gd" id="2_6ay45"]
+[ext_resource type="PackedScene" uid="uid://i30tp5n4hbqn" path="res://scenes/enemy_wall_2.tscn" id="2_8b8qo"]
+[ext_resource type="PackedScene" uid="uid://cyy857vwg3nf3" path="res://scenes/enemy_wall.tscn" id="3_r8ron"]
+[ext_resource type="PackedScene" uid="uid://d28imeamokdgm" path="res://scenes/enemy_wall_3.tscn" id="4_f5yfw"]
+[ext_resource type="Script" path="res://scenes/enemy_wall_2.gd" id="4_ufbhh"]
+[ext_resource type="PackedScene" uid="uid://dafs2deg4isat" path="res://scenes/enemy_wall_4.tscn" id="5_vnjqw"]
+[ext_resource type="Script" path="res://scenes/enemy_wall.gd" id="6_2psbk"]
+[ext_resource type="PackedScene" uid="uid://dr8nhe855kxmb" path="res://scenes/enemy_tower_2.tscn" id="6_uqbgk"]
+[ext_resource type="PackedScene" uid="uid://bu2c8py6aqkc3" path="res://scenes/enemy_tower.tscn" id="7_hjjdk"]
+[ext_resource type="PackedScene" uid="uid://dscl4isyy2gq0" path="res://scenes/enemy_tower_small_2.tscn" id="8_cslfk"]
+[ext_resource type="Script" path="res://scenes/enemy_wall_3.gd" id="8_ww1sm"]
+[ext_resource type="PackedScene" uid="uid://t3k2fx6pjsqu" path="res://scenes/enemy_tower_large.tscn" id="9_gtx8o"]
+[ext_resource type="Script" path="res://scenes/enemy_wall_4.gd" id="10_j7012"]
+[ext_resource type="PackedScene" uid="uid://qnl6n18ulfw1" path="res://scenes/enemy_tower_small_1.tscn" id="10_k6rgp"]
+[ext_resource type="PackedScene" uid="uid://dq5id0x8j5sus" path="res://scenes/enemy_keep.tscn" id="11_qpkwa"]
+[ext_resource type="Script" path="res://scenes/enemy_tower_2.gd" id="12_opx8a"]
+[ext_resource type="Script" path="res://scenes/enemy_tower.gd" id="14_4elfa"]
+[ext_resource type="Script" path="res://scenes/enemy_tower_small_2.gd" id="16_et230"]
+[ext_resource type="Script" path="res://scenes/enemy_tower_large.gd" id="18_hss6a"]
+[ext_resource type="Script" path="res://scenes/enemy_tower_small_1.gd" id="20_143wx"]
+[ext_resource type="Script" path="res://scenes/enemy_keep.gd" id="22_1cn84"]
+
+[node name="Enemy Castle" type="Node2D"]
+
+[node name="Enemy Wall Large" parent="." groups=["structure"] instance=ExtResource("1_0chl8")]
+position = Vector2(2313, 595)
+script = ExtResource("2_6ay45")
+
+[node name="Enemy Wall 2" parent="." instance=ExtResource("2_8b8qo")]
+position = Vector2(1205, 299)
+script = ExtResource("4_ufbhh")
+
+[node name="Enemy Wall" parent="." instance=ExtResource("3_r8ron")]
+position = Vector2(1045, 299)
+script = ExtResource("6_2psbk")
+
+[node name="Enemy Wall 3" parent="." instance=ExtResource("4_f5yfw")]
+position = Vector2(1062, 252)
+script = ExtResource("8_ww1sm")
+
+[node name="Enemy Wall 4" parent="." instance=ExtResource("5_vnjqw")]
+position = Vector2(1191, 250)
+script = ExtResource("10_j7012")
+
+[node name="Enemy Tower 2" parent="." instance=ExtResource("6_uqbgk")]
+position = Vector2(1261, 267)
+script = ExtResource("12_opx8a")
+
+[node name="Enemy Tower" parent="." instance=ExtResource("7_hjjdk")]
+position = Vector2(991, 267)
+script = ExtResource("14_4elfa")
+
+[node name="Enemy Tower Small 2" parent="." instance=ExtResource("8_cslfk")]
+position = Vector2(1192, 177)
+script = ExtResource("16_et230")
+
+[node name="Enemy Tower Large" parent="." instance=ExtResource("9_gtx8o")]
+position = Vector2(1127, 127)
+script = ExtResource("18_hss6a")
+
+[node name="Enemy Tower Small 1" parent="." instance=ExtResource("10_k6rgp")]
+position = Vector2(1065, 179)
+script = ExtResource("20_143wx")
+
+[node name="Enemy Keep" parent="." groups=["keep"] instance=ExtResource("11_qpkwa")]
+position = Vector2(1126, 234)
+script = ExtResource("22_1cn84")
