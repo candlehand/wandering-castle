@@ -10,12 +10,14 @@ load_path = "res://.godot/imported/Tower Small Sunset.png-7ac4087dfaa0725c0c7a01
 resource_local_to_scene = true
 size = Vector2(32, 92)
 
-[node name="PhysicsStructure" type="RigidBody2D"]
+[node name="PhysicsStructure" type="RigidBody2D" groups=["structure"]]
 texture_filter = 1
 collision_layer = 3
 collision_mask = 3
 mass = 1000.0
-inertia = 2.0
+inertia = 0.2
+max_contacts_reported = 5
+contact_monitor = true
 can_sleep = false
 lock_rotation = true
 script = ExtResource("1_t1u74")
@@ -26,7 +28,7 @@ texture_filter = 1
 texture = SubResource("CompressedTexture2D_8rw1n")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["structure"]]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_odrxs")
 metadata/_edit_group_ = true

@@ -6,13 +6,16 @@ var sprite
 var collision
 var image
 
+var cannonball = preload("res://scenes/cannonball.tscn")
+
 var structures_dict
 var structure_values = []
 var key : String = "wall_s"
 
 # Called when the node enters the scene tree for the first time.
-func _ready(id := key):
+func _ready():
 	structures_dict = Global.structures_dict
+	self.body_entered.connect(_on_Area_body_entered)
 
 
 
@@ -20,6 +23,12 @@ func _ready(id := key):
 func _process(delta):
 	pass
 
+
+func _on_Area_body_entered(body:Node) -> void:
+	print("I'm hit!")
+	pass
+	
+	
 # for duplicates that do not construct themselves
 func construct(key):
 	structures_dict = Global.structures_dict

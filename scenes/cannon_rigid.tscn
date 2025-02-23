@@ -147,5 +147,3 @@ autoplay = "firing"
 metadata/_edit_group_ = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
-rotation = -0.208536
-metadata/_edit_group_ = true

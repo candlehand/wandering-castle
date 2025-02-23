@@ -6,7 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_gxk18"]
 radius = 4.0
 
-[node name="Cannonball" type="Area2D"]
+[node name="Cannonball" type="Area2D" groups=["bullet"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_0fflg")
 metadata/_edit_group_ = true
 

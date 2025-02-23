@@ -5,13 +5,11 @@ extends Node
 var structure = preload("res://scenes/structure.tscn")
 var physics_structure = preload("res://scenes/physics_structure.tscn")
 var player_castle
+var keep_health = 10
 var walking = false
 
 var structure_name
 var new_structure
-
-
-signal is_dragging
 
 var placing_piece = false
 var desired_x
@@ -19,6 +17,7 @@ var desired_y
 
 # determines forward speed of castle
 var castle_velocity = .5
+signal is_dragging
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,6 +32,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if keep_health <= 0:
+		print("Game over!!!")
 	if walking == true:
 		# slowly and steadily moves the castle forward
 		$Castle.position.x += castle_velocity
@@ -87,6 +88,7 @@ func create_physics_structure(structure_name, x, y):
 		print(structure_name, " Brought us into the cannon code")
 		var cannon_scene: PackedScene = load("res://scenes/cannon_rigid.tscn")
 		var rigid_cannon = cannon_scene.instantiate()
+		rigid_cannon.connect("keep_hit", _on_cannonball_keep_hit)
 		player_castle.add_child(rigid_cannon)
 		rigid_cannon.position = Vector2(x, y)
 	else:
@@ -102,3 +104,9 @@ func _on_build_control_go_forth():
 	walking = true
 	$Castle/AnimatedSprite2D.play()
 	pass
+
+
+func _on_cannonball_keep_hit():
+	print("Game is tracking keep hits")
+	keep_health -= 1
+	pass # Replace with function body.
