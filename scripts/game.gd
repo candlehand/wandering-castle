@@ -35,13 +35,19 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if keep_health <= 0:
-		print("Game over!!!")
 		walking = false
-	else:
-		if walking == true:
-			# slowly and steadily moves the castle forward
-			$Castle.position.x += castle_velocity
-			pass
+		$Castle/AnimatedSprite2D.pause()
+		print("Game over!!!")
+		# load the death message
+		var image = Image.load_from_file("res://assets/Game_Over.png")
+		$YouDied/Sprite2D.texture = ImageTexture.create_from_image(image)
+	if $Castle.position.x > 700:
+		walking = false
+		$Castle/AnimatedSprite2D.pause()
+	if walking == true:
+		# slowly and steadily moves the castle forward
+		$Castle.position.x += castle_velocity
+	pass
 
 
 # used to capture inputs from player

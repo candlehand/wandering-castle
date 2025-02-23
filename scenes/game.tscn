@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ddhlgmmibyksv"]
+[gd_scene load_steps=21 format=3 uid="uid://ddhlgmmibyksv"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_68lht"]
 [ext_resource type="PackedScene" uid="uid://b44yxaahyripu" path="res://scenes/castle.tscn" id="1_mybr5"]
@@ -7,8 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://by2ert5qc88ss" path="res://assets/Background Images/Background Midground.png" id="4_e3v1m"]
 [ext_resource type="Texture2D" uid="uid://vog2xtl22j7k" path="res://assets/Background Images/Background Foreground.png" id="5_so8o1"]
 [ext_resource type="PackedScene" uid="uid://5amwj0l233bq" path="res://scenes/build_control.tscn" id="7_75j1y"]
-[ext_resource type="PackedScene" path="res://scenes/enemy_keep.tscn" id="8_6qbdc"]
+[ext_resource type="PackedScene" uid="uid://bmyesw5y4x6dg" path="res://scenes/enemy_keep.tscn" id="8_6qbdc"]
 [ext_resource type="PackedScene" path="res://scenes/enemy_tower_large.tscn" id="9_5ctow"]
+[ext_resource type="Script" path="res://scripts/enemy_keep.gd" id="9_yocy2"]
 [ext_resource type="PackedScene" path="res://scenes/enemy_wall.tscn" id="10_rvgw2"]
 [ext_resource type="PackedScene" path="res://scenes/enemy_wall_2.tscn" id="11_teui7"]
 [ext_resource type="PackedScene" path="res://scenes/enemy_wall_3.tscn" id="12_l1njd"]
@@ -17,7 +18,8 @@
 [ext_resource type="PackedScene" path="res://scenes/enemy_tower_small_2.tscn" id="15_d7e0j"]
 [ext_resource type="PackedScene" path="res://scenes/enemy_tower_2.tscn" id="16_hqkoc"]
 [ext_resource type="PackedScene" path="res://scenes/enemy_tower.tscn" id="17_wafoe"]
-[ext_resource type="PackedScene" uid="uid://cd2lr7a5ynwl3" path="res://scenes/enemy_wall_large.tscn" id="18_fl7sr"]
+[ext_resource type="PackedScene" path="res://scenes/enemy_wall_large.tscn" id="18_fl7sr"]
+[ext_resource type="PackedScene" uid="uid://cp0q8dp070rcf" path="res://scenes/you_died.tscn" id="20_bg6hw"]
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
@@ -76,6 +78,7 @@ offset_bottom = -76.0
 
 [node name="Enemy Keep" parent="." instance=ExtResource("8_6qbdc")]
 position = Vector2(1051, 189)
+script = ExtResource("9_yocy2")
 
 [node name="Enemy Tower Large" parent="." instance=ExtResource("9_5ctow")]
 position = Vector2(1051, 107)
@@ -106,6 +109,9 @@ position = Vector2(963, 269)
 
 [node name="Enemy Wall Large" parent="." instance=ExtResource("18_fl7sr")]
 position = Vector2(2238, 503)
+
+[node name="YouDied" parent="." instance=ExtResource("20_bg6hw")]
+position = Vector2(308, 123)
 
 [connection signal="create_structure" from="Castle/BuildControl" to="." method="_on_build_control_create_structure"]
 [connection signal="go_forth" from="Castle/BuildControl" to="." method="_on_build_control_go_forth"]

@@ -32,16 +32,18 @@ func _physics_process(delta):
 
 # fire the cannonball
 func shoot():
+	# do not shoot unless the game is running
+	if Global.running == true:
 	#instantiate a new cannonball
-	var ball = Cannonball.instantiate()
-	print("boom")
-	# connect the cannonball symbol to be forwarded ->
-	ball.connect("keep_hit", _on_cannonball_keep_hit)
-	ball.connect("structure_hit", _on_cannonball_structure_hit)
-	# add the instance to the scene
-	get_tree().get_root().add_child(ball)
-	# make it come out of the marker
-	ball.transform = $Marker2D.global_transform
+		var ball = Cannonball.instantiate()
+		print("boom")
+		# connect the cannonball symbol to be forwarded ->
+		ball.connect("keep_hit", _on_cannonball_keep_hit)
+		ball.connect("structure_hit", _on_cannonball_structure_hit)
+		# add the instance to the scene
+		get_tree().get_root().add_child(ball)
+		# make it come out of the marker
+		ball.transform = $Marker2D.global_transform
 
 
 # send a signal if the keep is hit

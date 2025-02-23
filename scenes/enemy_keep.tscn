@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq5id0x8j5sus"]
+[gd_scene load_steps=3 format=3 uid="uid://bmyesw5y4x6dg"]
 
 [ext_resource type="Texture2D" uid="uid://bigpdbkwfcccp" path="res://assets/Gray Castle/Keep Gray.png" id="1_agef5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lu5f"]
 size = Vector2(63, 72)
 
-[node name="Enemy Keep" type="Area2D"]
+[node name="Enemy Keep" type="RigidBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_agef5")

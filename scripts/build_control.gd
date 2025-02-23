@@ -88,7 +88,8 @@ func create_icon(image: Image):
 	return image
 	pass
 
-
+# Start button
 func _on_start_button_pressed():
 	$".".visible = false
+	Global.running = true
 	go_forth.emit()
