@@ -59,7 +59,3 @@ static func new_structure(dict_key: String):
 	return new_structure
 
 
-func _on_body_entered(body):
-	print("take my hp!")
-	health -= 1
-	pass # Replace with function body.

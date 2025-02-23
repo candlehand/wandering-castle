@@ -45,11 +45,11 @@ func shoot():
 
 
 # send a signal if the keep is hit
-func _on_cannonball_keep_hit():
+func _on_cannonball_keep_hit(body):
 	# print("[EMIT] keep_hit")
-	keep_hit.emit()
+	keep_hit.emit(body)
 
 
-func _on_cannonball_structure_hit():
+func _on_cannonball_structure_hit(body):
 	# print("[EMIT] structure_hit")
-	structure_hit.emit()
+	structure_hit.emit(body)

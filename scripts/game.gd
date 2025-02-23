@@ -36,10 +36,12 @@ func _ready():
 func _process(delta):
 	if keep_health <= 0:
 		print("Game over!!!")
-	if walking == true:
-		# slowly and steadily moves the castle forward
-		$Castle.position.x += castle_velocity
-		pass
+		walking = false
+	else:
+		if walking == true:
+			# slowly and steadily moves the castle forward
+			$Castle.position.x += castle_velocity
+			pass
 
 
 # used to capture inputs from player
@@ -109,13 +111,12 @@ func _on_build_control_go_forth():
 	pass
 
 
-func _on_cannonball_keep_hit():
+func _on_cannonball_keep_hit(body):
 	print("Game is tracking keep hits")
 	keep_health -= 1
 
 
-func _on_cannonball_structure_hit():
-	# print("Structure has been hit!")
-	# get_node(physics_structure).health -= 1
+func _on_cannonball_structure_hit(body):
+	body.health -= 1
 	pass
 	
