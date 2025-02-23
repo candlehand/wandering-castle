@@ -2,7 +2,7 @@ extends Area2D
 class_name Structure
 ## Handles logic for structural walls and (hopefully) towers
 
-
+var health = 10
 var sprite
 var collision
 var image
@@ -43,17 +43,10 @@ func _ready(id := key):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-	
+	if health <= 0:
+		self.queue_free()
+		pass
 
-# binds object placement to grid. the +5 on line 25 is because we wonky in here
-#func _input(event):
-#	if is_dragging and event is InputEventMouseMotion:
-#		var cursor_position = get_parent().get_local_mouse_position()
-#		var desired_x = (floor(cursor_position.x / 16) * 16) + 5
-#		var desired_y = floor(cursor_position.y / 16) * 16
-#		self.position = Vector2(desired_x, desired_y)
-#		
 
 # constructor method for building new structures; accepts dictionary key as input
 static func new_structure(dict_key: String):
@@ -62,7 +55,7 @@ static func new_structure(dict_key: String):
 	var new_structure: Structure = my_scene.instantiate()
 	new_structure.key = dict_key
 	return new_structure
-	
+
 
 # boolean toggle for is_dragging
 func drag_toggle(bool := false):
@@ -73,9 +66,11 @@ func drag_toggle(bool := false):
 		print("drag is on")
 		is_dragging = true
 
+
 # captures signal telling the structure we draggin'
 func _on_game_is_dragging(bool := true):
 	print("drag toggle received")
 	drag_toggle(bool)
-	
+
+
 

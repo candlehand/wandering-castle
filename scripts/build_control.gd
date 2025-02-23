@@ -20,6 +20,7 @@ var image
 var new_piece
 var new_icon
 
+signal go_forth
 signal create_structure
 signal create_cannon
 
@@ -34,10 +35,12 @@ func _ready():
 func _process(delta):
 	pass
 
+
 # 'i' denotes the number of the button starting from left; 0, 1, 2, 3
 func _on_press(dict_key):
-	print("[SIGNAL] The ", dict_key," button calls for aid! (build_control)")
-	create_structure.emit(dict_key)	
+	print("[SIGNAL] The ", dict_key," button calls for aid!")
+	create_structure.emit(dict_key)
+
 
 # generate the buttons dynamically
 func generate_menu():
@@ -84,3 +87,8 @@ func create_icon(image: Image):
 	image.resize(width, height, 1)
 	return image
 	pass
+
+
+func _on_start_button_pressed():
+	$".".visible = false
+	go_forth.emit()
