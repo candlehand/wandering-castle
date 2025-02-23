@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://els3n4ipvoo5"]
+
+[ext_resource type="PackedScene" uid="uid://cj75d7fhfv4id" path="res://scenes/cannon_rigid.tscn" id="1_c5xyy"]
+[ext_resource type="Script" path="res://scenes/bad_cannon_rigid.gd" id="2_cw3ub"]
+
+[node name="BadCannonRigid" instance=ExtResource("1_c5xyy")]
+script = ExtResource("2_cw3ub")
+badball = null
