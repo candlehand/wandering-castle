@@ -1,10 +1,10 @@
 extends RigidBody2D
 
 
-var health = 10
+var health = 40
 
 func ready():
-  pass
+	pass
 
 func _process(delta):
 	if health <= 0:

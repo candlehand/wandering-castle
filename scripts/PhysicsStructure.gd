@@ -8,7 +8,7 @@ var image
 
 var cannonball = preload("res://scenes/cannonball.tscn")
 
-var health = 10
+var health = 40
 var structures_dict
 var structure_values = []
 var key : String = "wall_s"
