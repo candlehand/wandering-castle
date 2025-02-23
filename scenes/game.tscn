@@ -1,12 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddhlgmmibyksv"]
+[gd_scene load_steps=19 format=3 uid="uid://ddhlgmmibyksv"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_68lht"]
 [ext_resource type="PackedScene" uid="uid://b44yxaahyripu" path="res://scenes/castle.tscn" id="1_mybr5"]
 [ext_resource type="Texture2D" uid="uid://m4bumlh3mgs8" path="res://assets/Background Images/Background Sky.png" id="2_domu4"]
 [ext_resource type="Texture2D" uid="uid://dq17vcosk6gie" path="res://assets/Background Images/Background Mountains.png" id="3_4v4hk"]
+[ext_resource type="PackedScene" uid="uid://d28imeamokdgm" path="res://scenes/enemy_wall_3.tscn" id="3_h74qx"]
 [ext_resource type="Texture2D" uid="uid://by2ert5qc88ss" path="res://assets/Background Images/Background Midground.png" id="4_e3v1m"]
 [ext_resource type="Texture2D" uid="uid://vog2xtl22j7k" path="res://assets/Background Images/Background Foreground.png" id="5_so8o1"]
+[ext_resource type="PackedScene" uid="uid://dq5id0x8j5sus" path="res://scenes/enemy_keep.tscn" id="6_0smky"]
 [ext_resource type="PackedScene" uid="uid://5amwj0l233bq" path="res://scenes/build_control.tscn" id="7_75j1y"]
+[ext_resource type="PackedScene" uid="uid://cyy857vwg3nf3" path="res://scenes/enemy_wall.tscn" id="10_7sii7"]
+[ext_resource type="PackedScene" uid="uid://i30tp5n4hbqn" path="res://scenes/enemy_wall_2.tscn" id="11_2v2uj"]
+[ext_resource type="PackedScene" uid="uid://dafs2deg4isat" path="res://scenes/enemy_wall_4.tscn" id="12_3q8c4"]
+[ext_resource type="PackedScene" uid="uid://bu2c8py6aqkc3" path="res://scenes/enemy_tower.tscn" id="13_ic2g2"]
+[ext_resource type="PackedScene" uid="uid://dr8nhe855kxmb" path="res://scenes/enemy_tower_2.tscn" id="14_behw0"]
+[ext_resource type="PackedScene" uid="uid://4qq4ncr4moij" path="res://scenes/enemy_wall_large.tscn" id="15_5s2nl"]
+[ext_resource type="PackedScene" uid="uid://qnl6n18ulfw1" path="res://scenes/enemy_tower_small_1.tscn" id="16_2sc61"]
+[ext_resource type="PackedScene" uid="uid://dscl4isyy2gq0" path="res://scenes/enemy_tower_small_2.tscn" id="17_njt0s"]
+[ext_resource type="PackedScene" uid="uid://t3k2fx6pjsqu" path="res://scenes/enemy_tower_large.tscn" id="18_dq83p"]
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
@@ -25,6 +36,12 @@ motion_mirroring = Vector2(1424, 0)
 [node name="Sky" type="Sprite2D" parent="BackgroundLayer/ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("2_domu4")
 centered = false
+
+[node name="Enemy Wall 3" parent="BackgroundLayer/ParallaxBackground/ParallaxLayer" instance=ExtResource("3_h74qx")]
+position = Vector2(1175, 310)
+
+[node name="Enemy Wall 4" parent="BackgroundLayer/ParallaxBackground/ParallaxLayer" instance=ExtResource("3_h74qx")]
+position = Vector2(1175, 311)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="BackgroundLayer/ParallaxBackground"]
 motion_scale = Vector2(0.75, 1)
@@ -62,6 +79,42 @@ offset_left = 174.0
 offset_top = -76.0
 offset_right = 174.0
 offset_bottom = -76.0
+
+[node name="Enemy Castle" type="Node2D" parent="."]
+position = Vector2(-160, -10)
+
+[node name="Enemy Keep" parent="Enemy Castle" groups=["keep"] instance=ExtResource("6_0smky")]
+position = Vector2(1219, 198)
+
+[node name="Enemy Wall" parent="Enemy Castle" instance=ExtResource("10_7sii7")]
+position = Vector2(1186, 310)
+
+[node name="Enemy Wall 2" parent="Enemy Castle" instance=ExtResource("11_2v2uj")]
+position = Vector2(1250, 310)
+
+[node name="Enemy Wall 3" parent="Enemy Castle" instance=ExtResource("3_h74qx")]
+position = Vector2(1187, 262)
+
+[node name="Enemy Wall 4" parent="Enemy Castle" instance=ExtResource("12_3q8c4")]
+position = Vector2(1250, 262)
+
+[node name="Enemy Tower" parent="Enemy Castle" instance=ExtResource("13_ic2g2")]
+position = Vector2(1131, 278)
+
+[node name="Enemy Tower 2" parent="Enemy Castle" instance=ExtResource("14_behw0")]
+position = Vector2(1306, 277)
+
+[node name="Enemy Wall Large" parent="Enemy Castle" instance=ExtResource("15_5s2nl")]
+position = Vector2(1219, 214)
+
+[node name="Enemy Tower Small 1" parent="Enemy Castle" instance=ExtResource("16_2sc61")]
+position = Vector2(1130, 185)
+
+[node name="Enemy Tower Small 2" parent="Enemy Castle" instance=ExtResource("17_njt0s")]
+position = Vector2(1306, 184)
+
+[node name="Enemy Tower Large" parent="Enemy Castle" instance=ExtResource("18_dq83p")]
+position = Vector2(1219, 115)
 
 [connection signal="create_structure" from="Castle/BuildControl" to="." method="_on_build_control_create_structure"]
 [connection signal="go_forth" from="Castle/BuildControl" to="." method="_on_build_control_go_forth"]

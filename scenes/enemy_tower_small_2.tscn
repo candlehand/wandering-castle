@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dscl4isyy2gq0"]
+
+[ext_resource type="PackedScene" uid="uid://qnl6n18ulfw1" path="res://scenes/enemy_tower_small_1.tscn" id="1_1l770"]
+
+[node name="Enemy Tower Small 2" instance=ExtResource("1_1l770")]
