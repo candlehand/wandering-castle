@@ -9,7 +9,7 @@ var paused = false
 var default_rotation: float = deg_to_rad(-12)
 
 signal keep_hit
-
+***********
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

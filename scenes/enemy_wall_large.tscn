@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://4qq4ncr4moij"]
+[gd_scene load_steps=3 format=3 uid="uid://cd2lr7a5ynwl3"]
 
 [ext_resource type="Texture2D" uid="uid://t6t40xk7xdqp" path="res://assets/Gray Castle/Wall Large Gray.png" id="2_6eyo2"]
 
@@ -9,7 +9,9 @@ size = Vector2(96, 48)
 position = Vector2(1186, 310)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1188, -297)
 texture = ExtResource("2_6eyo2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1188, -297)
 shape = SubResource("RectangleShape2D_4qknp")
