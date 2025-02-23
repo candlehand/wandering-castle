@@ -1,7 +1,8 @@
 extends Area2D
 
-var velocity = Vector2(750, -200)
-
+var velocity = Vector2(700, -250)
+signal keep_hit
+signal structure_hit
 
 func _process(delta):
 	velocity.y += gravity * delta
@@ -9,24 +10,27 @@ func _process(delta):
 	rotation = velocity.angle()
 
 
-func _on_BallisticBullet_body_entered(body):
-	queue_free()
-
-
-#var speed = 750
-
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-#	pass # Replace with function body.
+func _ready():
+	self.body_entered.connect(_on_Area_body_entered)
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _physics_process(delta):
 #	position += transform.x * speed * delta
 
-#func _on_Bullet_body_entered(body):
+
+func _on_Area_body_entered(body):
 	# special behavior if the projectile hits something in the "structure" group
-#	if body.is_in_group("structure"):
-#		body.queue_free()
-#	queue_free()
+	if body.is_in_group("structure"):
+		self.queue_free()
+		structure_hit.emit()
+		pass
+	# behavior if it hits the keep
+	if body.is_in_group("keep"):
+		self.queue_free()
+		# lower the hp
+		print("Ball has hit the keep")
+		keep_hit.emit()
+		pass
 	

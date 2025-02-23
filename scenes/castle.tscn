@@ -1,94 +1,120 @@
-[gd_scene load_steps=13 format=3 uid="uid://b44yxaahyripu"]
+[gd_scene load_steps=16 format=3 uid="uid://b44yxaahyripu"]
 
-[ext_resource type="Texture2D" uid="uid://5cm5studvf4x" path="res://assets/Castle Base/Castle Base Sprite Sheet.png" id="2_caled"]
+[ext_resource type="Script" path="res://scripts/castle.gd" id="1_1lk44"]
+[ext_resource type="Texture2D" uid="uid://5cm5studvf4x" path="res://assets/Castle Base/Castle Base Sprite Sheet.png" id="1_qn4hy"]
+[ext_resource type="Texture2D" uid="uid://b3rx23ohfq0vn" path="res://assets/Sunset Castle/Keep Sunset.png" id="2_vsfxp"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h4i20"]
-atlas = ExtResource("2_caled")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebyk3"]
+size = Vector2(212, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2un4"]
+atlas = ExtResource("1_qn4hy")
 region = Rect2(0, 0, 248, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2mhay"]
-atlas = ExtResource("2_caled")
+[sub_resource type="AtlasTexture" id="AtlasTexture_21f5o"]
+atlas = ExtResource("1_qn4hy")
 region = Rect2(0, 144, 248, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qjb4q"]
-atlas = ExtResource("2_caled")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jb51"]
+atlas = ExtResource("1_qn4hy")
 region = Rect2(0, 288, 248, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2k647"]
-atlas = ExtResource("2_caled")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqs71"]
+atlas = ExtResource("1_qn4hy")
 region = Rect2(0, 432, 248, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ajxp8"]
-atlas = ExtResource("2_caled")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubixa"]
+atlas = ExtResource("1_qn4hy")
 region = Rect2(0, 576, 248, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ntvat"]
-atlas = ExtResource("2_caled")
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa2jk"]
+atlas = ExtResource("1_qn4hy")
 region = Rect2(0, 720, 248, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4mayo"]
-atlas = ExtResource("2_caled")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn1b6"]
+atlas = ExtResource("1_qn4hy")
 region = Rect2(0, 864, 248, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ikotv"]
-atlas = ExtResource("2_caled")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kchls"]
+atlas = ExtResource("1_qn4hy")
 region = Rect2(0, 1008, 248, 144)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_x4uhu"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_stg26"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h4i20")
+"texture": SubResource("AtlasTexture_q2un4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2mhay")
+"texture": SubResource("AtlasTexture_21f5o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qjb4q")
+"texture": SubResource("AtlasTexture_0jb51")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2k647")
+"texture": SubResource("AtlasTexture_qqs71")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ajxp8")
+"texture": SubResource("AtlasTexture_ubixa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ntvat")
+"texture": SubResource("AtlasTexture_oa2jk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4mayo")
+"texture": SubResource("AtlasTexture_vn1b6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ikotv")
+"texture": SubResource("AtlasTexture_kchls")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebyk3"]
-size = Vector2(212, 39)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b77xx"]
 size = Vector2(179, 230)
 
-[node name="Castle" type="AnimatableBody2D"]
-sync_to_physics = false
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7f6j"]
+size = Vector2(65, 74)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_x4uhu")
-autoplay = "default"
-frame_progress = 0.37204
+[node name="Castle" type="AnimatableBody2D"]
+texture_filter = 1
+collision_layer = 3
+collision_mask = 3
+sync_to_physics = false
+script = ExtResource("1_1lk44")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 27.5)
 shape = SubResource("RectangleShape2D_ebyk3")
 
 [node name="CastleCam" type="Camera2D" parent="."]
-position = Vector2(193, -79)
+position = Vector2(143, -79)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_stg26")
+autoplay = "default"
 
 [node name="BuildingZone" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 512
 
 [node name="ZoneBoundaries" type="CollisionShape2D" parent="BuildingZone"]
 position = Vector2(-1.5, -107)
 shape = SubResource("RectangleShape2D_b77xx")
+
+[node name="Keep" type="AnimatableBody2D" parent="." groups=["keep"]]
+position = Vector2(-3, -32)
+collision_layer = 3
+collision_mask = 3
+sync_to_physics = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Keep"]
+texture = ExtResource("2_vsfxp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Keep"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_d7f6j")

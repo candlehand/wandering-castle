@@ -1,18 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://bhbj5dbt60poq"]
 
 [ext_resource type="Script" path="res://scripts/structure.gd" id="1_orl5b"]
-[ext_resource type="Texture2D" uid="uid://bshmwy3tj0ygr" path="res://assets/Sunset Castle/Wall Small Sunset.png" id="2_vfqjg"]
+[ext_resource type="Texture2D" uid="uid://g4xd2a6btn54" path="res://assets/Sunset Castle/Tower Small Sunset.png" id="2_db25y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0or7"]
-size = Vector2(31, 46)
+size = Vector2(32, 92)
 
 [node name="Structure" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_orl5b")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_vfqjg")
+texture = ExtResource("2_db25y")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 1)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_y0or7")
+metadata/_edit_group_ = true
