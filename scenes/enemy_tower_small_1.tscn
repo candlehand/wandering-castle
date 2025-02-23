@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://qnl6n18ulfw1"]
+
+[ext_resource type="Texture2D" uid="uid://cva3vkymlvbun" path="res://assets/Gray Castle/Tower Small Gray.png" id="1_7ryp7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf4tg"]
+size = Vector2(30, 89)
+
+[node name="Enemy Tower Small 1" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7ryp7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_yf4tg")

@@ -24,4 +24,3 @@ func _physics_process(delta):
 #	print("boom")
 #	owner.add_child(b)
 #	b.transform = $Marker2D.global_transform
-
