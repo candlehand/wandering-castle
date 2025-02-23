@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://ddhlgmmibyksv"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_68lht"]
+[ext_resource type="PackedScene" uid="uid://b44yxaahyripu" path="res://scenes/castle.tscn" id="1_mybr5"]
+[ext_resource type="Texture2D" uid="uid://m4bumlh3mgs8" path="res://assets/Background Images/Background Sky.png" id="2_domu4"]
+[ext_resource type="Texture2D" uid="uid://dq17vcosk6gie" path="res://assets/Background Images/Background Mountains.png" id="3_4v4hk"]
+[ext_resource type="Texture2D" uid="uid://by2ert5qc88ss" path="res://assets/Background Images/Background Midground.png" id="4_e3v1m"]
+[ext_resource type="Texture2D" uid="uid://vog2xtl22j7k" path="res://assets/Background Images/Background Foreground.png" id="5_so8o1"]
+[ext_resource type="PackedScene" uid="uid://5amwj0l233bq" path="res://scenes/build_control.tscn" id="7_75j1y"]
+[ext_resource type="PackedScene" uid="uid://q06lxf085jvn" path="res://scenes/enemy_castle.tscn" id="8_dtv1l"]
+[ext_resource type="PackedScene" uid="uid://bq0i8lltg44rn" path="res://scenes/enemy_ground.tscn" id="9_p7bc8"]
+
+[node name="Game" type="Node2D"]
+texture_filter = 1
+position = Vector2(100, 0)
+script = ExtResource("1_68lht")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="BackgroundLayer"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BackgroundLayer/ParallaxBackground"]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(1424, 0)
+
+[node name="Sky" type="Sprite2D" parent="BackgroundLayer/ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_domu4")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="BackgroundLayer/ParallaxBackground"]
+motion_scale = Vector2(0.75, 1)
+motion_mirroring = Vector2(1424, 0)
+
+[node name="Mountains" type="Sprite2D" parent="BackgroundLayer/ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("3_4v4hk")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="BackgroundLayer/ParallaxBackground"]
+motion_mirroring = Vector2(1424, 0)
+
+[node name="Midground" type="Sprite2D" parent="BackgroundLayer/ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("4_e3v1m")
+centered = false
+
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+layer = 5
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_scale = Vector2(1.4, 1)
+motion_mirroring = Vector2(1424, 0)
+
+[node name="Foreground" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer4"]
+position = Vector2(0, 2)
+texture = ExtResource("5_so8o1")
+centered = false
+
+[node name="Castle" parent="." instance=ExtResource("1_mybr5")]
+position = Vector2(77, 259)
+constant_linear_velocity = Vector2(0, 25)
+
+[node name="BuildControl" parent="Castle" instance=ExtResource("7_75j1y")]
+offset_left = 174.0
+offset_top = -76.0
+offset_right = 174.0
+offset_bottom = -76.0
+
+[node name="Enemy Castle" parent="." instance=ExtResource("8_dtv1l")]
+
+[node name="Enemy Ground" parent="." instance=ExtResource("9_p7bc8")]
+position = Vector2(967, 326)
+
+[connection signal="create_structure" from="Castle/BuildControl" to="." method="_on_build_control_create_structure"]
+[connection signal="go_forth" from="Castle/BuildControl" to="." method="_on_build_control_go_forth"]
+[connection signal="go_forth" from="Castle/BuildControl" to="Castle" method="_on_build_control_go_forth"]
