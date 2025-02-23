@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddhlgmmibyksv"]
+[gd_scene load_steps=12 format=3 uid="uid://ddhlgmmibyksv"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_68lht"]
 [ext_resource type="PackedScene" uid="uid://b44yxaahyripu" path="res://scenes/castle.tscn" id="1_mybr5"]
@@ -9,8 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://5amwj0l233bq" path="res://scenes/build_control.tscn" id="7_75j1y"]
 [ext_resource type="PackedScene" uid="uid://bqsewdndft4ku" path="res://scenes/enemy_castle.tscn" id="8_le5jx"]
 [ext_resource type="PackedScene" uid="uid://bq0i8lltg44rn" path="res://scenes/enemy_ground.tscn" id="9_1phno"]
-[ext_resource type="PackedScene" uid="uid://mavl5vhwq7w8" path="res://scenes/cannon.tscn" id="11_g2423"]
-[ext_resource type="PackedScene" uid="uid://els3n4ipvoo5" path="res://scenes/bad_cannon_rigid.tscn" id="12_14rit"]
+[ext_resource type="PackedScene" uid="uid://c6681hokhv2dm" path="res://scenes/bad_cannon_rigid.tscn" id="11_akpjs"]
 [ext_resource type="PackedScene" uid="uid://cp0q8dp070rcf" path="res://scenes/you_died.tscn" id="20_bg6hw"]
 
 [node name="Game" type="Node2D"]
@@ -68,18 +67,28 @@ offset_top = -76.0
 offset_right = 174.0
 offset_bottom = -76.0
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Castle"]
+layer = 128
+
+[node name="YouDied" parent="Castle/CanvasLayer" instance=ExtResource("20_bg6hw")]
+position = Vector2(324, 139)
+
 [node name="Enemy Castle" parent="." instance=ExtResource("8_le5jx")]
 
 [node name="Enemy Ground" parent="." instance=ExtResource("9_1phno")]
 position = Vector2(978, 333)
 
-[node name="YouDied" parent="." instance=ExtResource("20_bg6hw")]
-position = Vector2(308, 123)
+[node name="BadCannonRigid" parent="." instance=ExtResource("11_akpjs")]
+position = Vector2(1060, 127)
 
-[node name="Cannon" parent="." instance=ExtResource("11_g2423")]
+[node name="BadCannonRigid2" parent="." instance=ExtResource("11_akpjs")]
+position = Vector2(1035, 219)
 
-[node name="BadCannonRigid" parent="." instance=ExtResource("12_14rit")]
-position = Vector2(157, 238)
+[node name="BadCannonRigid3" parent="." instance=ExtResource("11_akpjs")]
+position = Vector2(998, 207)
+
+[node name="BadCannonRigid4" parent="." instance=ExtResource("11_akpjs")]
+position = Vector2(973, 207)
 
 [connection signal="create_structure" from="Castle/BuildControl" to="." method="_on_build_control_create_structure"]
 [connection signal="go_forth" from="Castle/BuildControl" to="." method="_on_build_control_go_forth"]

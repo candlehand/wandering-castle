@@ -43,10 +43,12 @@ func _process(delta):
 		print("Game over!!!")
 		# load the death message
 		var image = Image.load_from_file("res://assets/Game_Over.png")
-		$YouDied/Sprite2D.texture = ImageTexture.create_from_image(image)
+		$Castle/CanvasLayer/YouDied/Sprite2D.texture = ImageTexture.create_from_image(image)
 	if enemy_health <= 0:
 		# winning happens
 		print("You win!")
+		var image = Image.load_from_file("res://assets/Enemy_Defeated.png")
+		$Castle/CanvasLayer/YouDied/Sprite2D.texture = ImageTexture.create_from_image(image)
 		Global.running = false
 		pass
 	if Global.running == false:
