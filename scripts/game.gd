@@ -5,6 +5,7 @@ extends Node
 var structure = preload("res://scenes/structure.tscn")
 var physics_structure = preload("res://scenes/physics_structure.tscn")
 var player_castle
+
 var keep_health = 10
 var walking = false
 
@@ -18,6 +19,7 @@ var desired_y
 # determines forward speed of castle
 var castle_velocity = .5
 signal is_dragging
+signal structure_hit
 
 
 # Called when the node enters the scene tree for the first time.
@@ -89,6 +91,7 @@ func create_physics_structure(structure_name, x, y):
 		var cannon_scene: PackedScene = load("res://scenes/cannon_rigid.tscn")
 		var rigid_cannon = cannon_scene.instantiate()
 		rigid_cannon.connect("keep_hit", _on_cannonball_keep_hit)
+		rigid_cannon.connect("structure_hit", _on_cannonball_structure_hit)
 		player_castle.add_child(rigid_cannon)
 		rigid_cannon.position = Vector2(x, y)
 	else:
@@ -109,4 +112,10 @@ func _on_build_control_go_forth():
 func _on_cannonball_keep_hit():
 	print("Game is tracking keep hits")
 	keep_health -= 1
-	pass # Replace with function body.
+
+
+func _on_cannonball_structure_hit():
+	# print("Structure has been hit!")
+	# get_node(physics_structure).health -= 1
+	pass
+	

@@ -8,6 +8,7 @@ var image
 
 var cannonball = preload("res://scenes/cannonball.tscn")
 
+var health = 10
 var structures_dict
 var structure_values = []
 var key : String = "wall_s"
@@ -18,14 +19,16 @@ func _ready():
 	self.body_entered.connect(_on_Area_body_entered)
 
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if health <= 0:
+		queue_free()
 	pass
 
 
-func _on_Area_body_entered(body:Node) -> void:
+func _on_Area_body_entered(body:Area2D) -> void:
 	print("I'm hit!")
+	health -= 1
 	pass
 	
 	
@@ -54,3 +57,9 @@ static func new_structure(dict_key: String):
 	var my_scene: PackedScene = load("res://scenes/physics_structure.tscn")
 	var new_structure: PhysicsStructure = my_scene.instantiate().duplicate()
 	return new_structure
+
+
+func _on_body_entered(body):
+	print("take my hp!")
+	health -= 1
+	pass # Replace with function body.

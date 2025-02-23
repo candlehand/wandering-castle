@@ -9,6 +9,7 @@ var paused = false
 var default_rotation: float = deg_to_rad(-12)
 
 signal keep_hit
+signal structure_hit
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,18 +32,24 @@ func _physics_process(delta):
 
 # fire the cannonball
 func shoot():
-	
 	#instantiate a new cannonball
-	var b = Cannonball.instantiate()
+	var ball = Cannonball.instantiate()
 	print("boom")
 	# connect the cannonball symbol to be forwarded ->
-	b.connect("keep_hit", _on_cannonball_keep_hit)
+	ball.connect("keep_hit", _on_cannonball_keep_hit)
+	ball.connect("structure_hit", _on_cannonball_structure_hit)
 	# add the instance to the scene
-	get_tree().get_root().add_child(b)
+	get_tree().get_root().add_child(ball)
 	# make it come out of the marker
-	b.transform = $Marker2D.global_transform
+	ball.transform = $Marker2D.global_transform
 
 
 # send a signal if the keep is hit
 func _on_cannonball_keep_hit():
+	# print("[EMIT] keep_hit")
 	keep_hit.emit()
+
+
+func _on_cannonball_structure_hit():
+	# print("[EMIT] structure_hit")
+	structure_hit.emit()

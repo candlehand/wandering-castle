@@ -2,7 +2,7 @@ extends Area2D
 class_name Structure
 ## Handles logic for structural walls and (hopefully) towers
 
-
+var health = 10
 var sprite
 var collision
 var image
@@ -43,8 +43,9 @@ func _ready(id := key):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-	
+	if health <= 0:
+		self.queue_free()
+		pass
 
 
 # constructor method for building new structures; accepts dictionary key as input
@@ -54,7 +55,7 @@ static func new_structure(dict_key: String):
 	var new_structure: Structure = my_scene.instantiate()
 	new_structure.key = dict_key
 	return new_structure
-	
+
 
 # boolean toggle for is_dragging
 func drag_toggle(bool := false):
@@ -70,5 +71,6 @@ func drag_toggle(bool := false):
 func _on_game_is_dragging(bool := true):
 	print("drag toggle received")
 	drag_toggle(bool)
-	
+
+
 

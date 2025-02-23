@@ -24,13 +24,14 @@ func _on_Area_body_entered(body):
 	# special behavior if the projectile hits something in the "structure" group
 	if body.is_in_group("structure"):
 		self.queue_free()
+		# print("Ball has hit the structure")
 		structure_hit.emit()
 		pass
 	# behavior if it hits the keep
 	if body.is_in_group("keep"):
 		self.queue_free()
 		# lower the hp
-		print("Ball has hit the keep")
+		# print("Ball has hit the keep")
 		keep_hit.emit()
 		pass
 	
