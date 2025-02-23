@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddhlgmmibyksv"]
+[gd_scene load_steps=10 format=3 uid="uid://ddhlgmmibyksv"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_68lht"]
 [ext_resource type="PackedScene" uid="uid://b44yxaahyripu" path="res://scenes/castle.tscn" id="1_mybr5"]
@@ -7,9 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://by2ert5qc88ss" path="res://assets/Background Images/Background Midground.png" id="4_e3v1m"]
 [ext_resource type="Texture2D" uid="uid://vog2xtl22j7k" path="res://assets/Background Images/Background Foreground.png" id="5_so8o1"]
 [ext_resource type="PackedScene" uid="uid://5amwj0l233bq" path="res://scenes/build_control.tscn" id="7_75j1y"]
-[ext_resource type="PackedScene" uid="uid://bqsewdndft4ku" path="res://scenes/enemy_castle.tscn" id="8_le5jx"]
-[ext_resource type="PackedScene" path="res://scenes/enemy_ground.tscn" id="9_1phno"]
-[ext_resource type="PackedScene" uid="uid://cp0q8dp070rcf" path="res://scenes/you_died.tscn" id="20_bg6hw"]
+[ext_resource type="PackedScene" uid="uid://q06lxf085jvn" path="res://scenes/enemy_castle.tscn" id="8_dtv1l"]
+[ext_resource type="PackedScene" uid="uid://bq0i8lltg44rn" path="res://scenes/enemy_ground.tscn" id="9_p7bc8"]
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
@@ -56,7 +55,7 @@ position = Vector2(0, 2)
 texture = ExtResource("5_so8o1")
 centered = false
 
-[node name="Castle" parent="." groups=["player"] instance=ExtResource("1_mybr5")]
+[node name="Castle" parent="." instance=ExtResource("1_mybr5")]
 position = Vector2(77, 259)
 constant_linear_velocity = Vector2(0, 25)
 
@@ -66,13 +65,10 @@ offset_top = -76.0
 offset_right = 174.0
 offset_bottom = -76.0
 
-[node name="Enemy Castle" parent="." instance=ExtResource("8_le5jx")]
+[node name="Enemy Castle" parent="." instance=ExtResource("8_dtv1l")]
 
-[node name="Enemy Ground" parent="." instance=ExtResource("9_1phno")]
-position = Vector2(978, 333)
-
-[node name="YouDied" parent="." instance=ExtResource("20_bg6hw")]
-position = Vector2(308, 123)
+[node name="Enemy Ground" parent="." instance=ExtResource("9_p7bc8")]
+position = Vector2(967, 326)
 
 [connection signal="create_structure" from="Castle/BuildControl" to="." method="_on_build_control_create_structure"]
 [connection signal="go_forth" from="Castle/BuildControl" to="." method="_on_build_control_go_forth"]

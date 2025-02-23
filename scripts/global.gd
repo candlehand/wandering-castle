@@ -13,6 +13,9 @@ const structures_dict = {
 	"cannon": ["res://assets/Weapons/Cannon Asset Static.png", 0, 0, 0, 0]
 }
 
+# used to set the game running/moving or not
+var running = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Global script reporting for duty!")

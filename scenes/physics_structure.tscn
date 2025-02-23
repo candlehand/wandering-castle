@@ -10,7 +10,7 @@ load_path = "res://.godot/imported/Tower Small Sunset.png-7ac4087dfaa0725c0c7a01
 resource_local_to_scene = true
 size = Vector2(32, 92)
 
-[node name="PhysicsStructure" type="RigidBody2D" groups=["structure"]]
+[node name="PhysicsStructure" type="RigidBody2D" groups=["enemy", "structure"]]
 texture_filter = 1
 collision_layer = 3
 collision_mask = 3

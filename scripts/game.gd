@@ -6,7 +6,8 @@ var structure = preload("res://scenes/structure.tscn")
 var physics_structure = preload("res://scenes/physics_structure.tscn")
 var player_castle
 
-var keep_health = 10
+var player_health = 40
+var enemy_health = 40
 var walking = false
 
 var structure_name
@@ -34,12 +35,29 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if keep_health <= 0:
+	if Global.running == true:
+		walking = true
+	if player_health <= 0:
+		walking = false
+		$Castle/AnimatedSprite2D.pause()
 		print("Game over!!!")
+		# load the death message
+		var image = Image.load_from_file("res://assets/Game_Over.png")
+		$YouDied/Sprite2D.texture = ImageTexture.create_from_image(image)
+	if enemy_health <= 0:
+		# winning happens
+		print("You win!")
+		Global.running = false
+		pass
+	if Global.running == false:
+		walking = false
+	if $Castle.position.x > 750:
+		walking = false
+		$Castle/AnimatedSprite2D.pause()
 	if walking == true:
 		# slowly and steadily moves the castle forward
 		$Castle.position.x += castle_velocity
-		pass
+	pass
 
 
 # used to capture inputs from player
@@ -109,13 +127,13 @@ func _on_build_control_go_forth():
 	pass
 
 
-func _on_cannonball_keep_hit():
-	print("Game is tracking keep hits")
-	keep_health -= 1
+func _on_cannonball_keep_hit(body):
+	if body.is_in_group("player"):
+		player_health -= 1
+	if body.is_in_group("enemy"):
+		enemy_health -= 1
 
-
-func _on_cannonball_structure_hit():
-	# print("Structure has been hit!")
-	# get_node(physics_structure).health -= 1
+func _on_cannonball_structure_hit(body):
+	body.health -= 1
 	pass
 	

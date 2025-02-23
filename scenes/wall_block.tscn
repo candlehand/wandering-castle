@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://m3j2nll2x581"]
+
+[ext_resource type="Texture2D" uid="uid://brv7bh46q3f7i" path="res://assets/Sunset Castle/Wall Large Sunset.png" id="1_wy1rt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsedl"]
+size = Vector2(95, 48)
+
+[node name="Wall Block" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_vsedl")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("1_wy1rt")

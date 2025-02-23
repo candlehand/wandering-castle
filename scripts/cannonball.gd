@@ -25,13 +25,13 @@ func _on_Area_body_entered(body):
 	if body.is_in_group("structure"):
 		self.queue_free()
 		# print("Ball has hit the structure")
-		structure_hit.emit()
+		structure_hit.emit(body)
 		pass
 	# behavior if it hits the keep
 	if body.is_in_group("keep"):
 		self.queue_free()
 		# lower the hp
 		# print("Ball has hit the keep")
-		keep_hit.emit()
+		keep_hit.emit(body)
 		pass
 	

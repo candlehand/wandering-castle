@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyy857vwg3nf3"]
+
+[ext_resource type="Texture2D" uid="uid://ctud088dii06w" path="res://assets/Gray Castle/Wall Medium Gray.png" id="1_01amj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwfbd"]
+size = Vector2(64, 48)
+
+[node name="Enemy Wall" type="RigidBody2D" groups=["structure"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_01amj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_qwfbd")

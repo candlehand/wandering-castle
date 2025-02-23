@@ -8,7 +8,7 @@ var image
 
 var cannonball = preload("res://scenes/cannonball.tscn")
 
-var health = 10
+var health = 40
 var structures_dict
 var structure_values = []
 var key : String = "wall_s"
@@ -16,7 +16,6 @@ var key : String = "wall_s"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	structures_dict = Global.structures_dict
-	self.body_entered.connect(_on_Area_body_entered)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,12 +24,6 @@ func _process(delta):
 		queue_free()
 	pass
 
-
-func _on_Area_body_entered(body:Area2D) -> void:
-	print("I'm hit!")
-	health -= 1
-	pass
-	
 	
 # for duplicates that do not construct themselves
 func construct(key):
@@ -59,7 +52,3 @@ static func new_structure(dict_key: String):
 	return new_structure
 
 
-func _on_body_entered(body):
-	print("take my hp!")
-	health -= 1
-	pass # Replace with function body.
